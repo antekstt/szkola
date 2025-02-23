@@ -20,7 +20,7 @@ Wymagane!!:
 -galeria
 
 
-Na 6 mozna dodac:
+Na ocene 6 mozna dodac:
 Card (po kliknieciu na "kartę obraca się ona i z tylu jest napis")
 
 opcjoanlne:
