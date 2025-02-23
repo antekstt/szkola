@@ -1,0 +1,30 @@
+Strona one-page site
+1 produkt - min. 4 rodzaje
+
+Sekcje:
+Ekran startowy
+Oferta
+O nas
+Galeria
+Miejsce
+Kontakt
+
+
+Wymagane!!:
+-HTML+CSS+JS             
+-smooth scrolling        
+-mapa                    
+-Formularz (kontaktowy, ankieta jako ocena)  
+-Ikony (np w menu)
+-google fonts
+-galeria
+
+
+Na 6 mozna dodac:
+Card (po kliknieciu na "kartę obraca się ona i z tylu jest napis")
+
+opcjoanlne:
+slider
+vegas background
+Wideo
+rozwijane menu
