@@ -58,32 +58,92 @@ section p {
     margin: 20px auto;
 }
 
+
+/* Tekst i przycisk w sekcji #start */
+#start h1,
+#start p,
 #start a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    padding: 5px 12px;
-    background-color: #ffcccb;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    z-index: 2; /* Tekst i przycisk nad przyciemnieniem */
 }
 
-#start a:hover {
-    background-color: #f2d7d5;
-    color: #000;
+/* Sekcja #start */
+#start {
+    position: relative;
+    height: 80%; /* Zmień tę wartość, aby dostosować wysokość */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden; /* Ukryj przewijanie slidera poza sekcją */
 }
 
+/* Przyciemnienie slidera */
+#start::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Przyciemnienie */
+    z-index: 1; /* Warstwa nad sliderem, pod tekstem */
+}
+
+/* Slider jako tło */
+.slider-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Wysokość zgodna z sekcją #start */
+    z-index: 0; /* Slider pod przyciemnieniem i tekstem */
+}
+
+.slider-container {
+    width: 100%;
+    height: 100%; /* Wysokość zgodna z sekcją #start */
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider {
+    display: flex;
+    width: 100%;
+    height: 100%; /* Wysokość zgodna z sekcją #start */
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%; /* Wysokość zgodna z sekcją #start */
+    box-sizing: border-box;
+    display: flex; /* Dodane, aby zapewnić poprawne wyświetlanie */
+    align-items: center; /* Wyśrodkowanie obrazów w slajdzie */
+    justify-content: center; /* Wyśrodkowanie obrazów w slajdzie */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Dopasuj zdjęcia do kontenera */
+}
+
+/* Menu oferty */
 .menu {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr); /* 2 karty w rzędzie */
+    gap: 20px; /* Odstęp między kartami */
     justify-content: center;
     margin-bottom: 20px;
+    max-width: 800px; /* Ogranicz szerokość, aby karty nie były zbyt szerokie */
+    margin: 0 auto; /* Wyśrodkuj menu */
 }
 
 .card {
-    width: 200px;
-    height: 200px;
+    width: 200px; /* Stała szerokość karty */
+    height: 200px; /* Stała wysokość karty */
     background: #ffe4e1;
     border-radius: 10px;
     display: flex;
@@ -140,6 +200,7 @@ section p {
     border-radius: 5px;
 }
 
+/* Formularz */
 #form {
     display: flex;
     flex-direction: column;
@@ -168,42 +229,10 @@ section p {
     cursor: pointer;
 }
 
-/* Slider Styles */
-.slider-wrapper {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin: 0 auto;
-}
 
-.slider-container {
-    width: 100%;
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.slider {
-    display: flex;
-    width: 100%;
-}
-
-.slide {
-    min-width: 100%;
-    box-sizing: border-box;
-}
-
-.slide img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 10px;
-}
-
+/* Responsywność */
 @media (max-width: 768px) {
-    #form {
-        width: 90%;
-    }
     .menu {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Na mniejszych ekranach 1 karta w rzędzie */
     }
 }
