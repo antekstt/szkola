@@ -1,3 +1,4 @@
+// Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -7,10 +8,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Flip card functionality
 function flipCard(card) {
     card.classList.toggle('flipped');
 }
 
+// Form submission handling
 document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -23,6 +26,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
     successMessage.style.display = 'block'; // Show the success message
 });
 
+// Slider functionality
 const slider = document.querySelector('.slider');
 const slides = document.querySelectorAll('.slide');
 let slideIndex = 0;
@@ -35,20 +39,20 @@ function showSlide(index) {
 function nextSlide() {
     slideIndex++;
     if (slideIndex >= slides.length) {
-        slideIndex = 0;
+        slideIndex = 0; // Wróć do pierwszego slajdu po ostatnim
     }
     showSlide(slideIndex);
 }
 
 // Automatically advance to the next slide every 3 seconds
-setInterval(nextSlide, 3000); // Changed to 3 seconds for smoother transition
+setInterval(nextSlide, 3000);
 
 // Initial slide display
 window.addEventListener('load', () => {
     showSlide(slideIndex);
 });
 
+// Recalculate slide width on window resize
 window.addEventListener('resize', () => {
-    // Recalculate slide width on window resize
     showSlide(slideIndex);
 });
