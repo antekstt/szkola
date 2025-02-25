@@ -24,31 +24,31 @@ document.getElementById('form').addEventListener('submit', function(event) {
 });
 
 const slider = document.querySelector('.slider');
-        const slides = document.querySelectorAll('.slide');
-        let slideIndex = 0;
-        const slideWidth = slides[0].offsetWidth; // Get the width of a single slide
+const slides = document.querySelectorAll('.slide');
+let slideIndex = 0;
 
-        function showSlide(index) {
-            slider.style.transform = `translateX(-${index * slideWidth}px)`;
-        }
+function showSlide(index) {
+    const slideWidth = slides[0].offsetWidth; // Get the width of a single slide
+    slider.style.transform = `translateX(-${index * slideWidth}px)`;
+}
 
-        function nextSlide() {
-            slideIndex++;
-            if (slideIndex >= slides.length) {
-                slideIndex = 0;
-            }
-            showSlide(slideIndex);
-        }
+function nextSlide() {
+    slideIndex++;
+    if (slideIndex >= slides.length) {
+        slideIndex = 0;
+    }
+    showSlide(slideIndex);
+}
 
-        // Automatically advance to the next slide every 3 seconds
-        setInterval(nextSlide, 1000);
+// Automatically advance to the next slide every 3 seconds
+setInterval(nextSlide, 3000); // Changed to 3 seconds for smoother transition
 
-        // Initial slide display
-        showSlide(slideIndex);
+// Initial slide display
+window.addEventListener('load', () => {
+    showSlide(slideIndex);
+});
 
-        window.addEventListener('resize', () => {
-        // Recalculate slide width on window resize
-            const newSlideWidth = slides[0].offsetWidth;
-            showSlide(slideIndex)
-            slider.style.transform = `translateX(-${slideIndex * newSlideWidth}px)`;
-        })
+window.addEventListener('resize', () => {
+    // Recalculate slide width on window resize
+    showSlide(slideIndex);
+});
