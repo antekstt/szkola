@@ -2,7 +2,7 @@ package zad3;
 import java.util.Scanner;
 public class zad3
 {
-    public ststic void main(String[] args)
+    public static void main(String[] args)
     {
         Scanner d = new Scanner(System.in);
         int wiek;
