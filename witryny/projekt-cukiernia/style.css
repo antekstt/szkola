@@ -63,7 +63,7 @@ section p {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    padding: 0px 10px;
+    padding: 10px 20px;
     background: linear-gradient(45deg, #ff6f61, #ff3b2f); /* Gradientowe tło */
     border-radius: 5px;
     transition: all 0.3s ease;
@@ -84,7 +84,6 @@ section p {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Tekst i przycisk w sekcji #start */
 #start h1,
 #start p,
@@ -96,7 +95,7 @@ section p {
 /* Sekcja #start */
 #start {
     position: relative;
-    height: 80%; /* Zmień tę wartość, aby dostosować wysokość */
+    height: 80vh; /* Wysokość proporcjonalna do okna przeglądarki */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,6 +153,85 @@ section p {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Dopasuj zdjęcia do kontenera */
+}
+
+/* Galeria */
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Odstęp między sliderami */
+    padding: 20px;
+}
+
+.cake-slider {
+    text-align: center;
+}
+
+.cake-slider h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Slider w galerii */
+.gallery-slider-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.gallery-slider-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.gallery-slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.gallery-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Przyciski nawigacyjne w galerii */
+.gallery-scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.gallery-scroll-button:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.gallery-scroll-button.left {
+    left: 10px;
+}
+
+.gallery-scroll-button.right {
+    right: 10px;
 }
 
 /* Menu oferty */
@@ -255,10 +333,14 @@ section p {
     cursor: pointer;
 }
 
-
 /* Responsywność */
 @media (max-width: 768px) {
     .menu {
         grid-template-columns: 1fr; /* Na mniejszych ekranach 1 karta w rzędzie */
+    }
+    .card {
+        width: 100%; /* Karty zajmują całą szerokość na mniejszych ekranach */
+        height: auto; /* Wysokość dostosowuje się do zawartości */
+        aspect-ratio: 1 / 1; /* Zachowaj kwadratowy kształt */
     }
 }

@@ -26,7 +26,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
     successMessage.style.display = 'block'; // Show the success message
 });
 
-// Slider functionality
+// Slider functionality for the main slider in #start
 const slider = document.querySelector('.slider');
 const slides = document.querySelectorAll('.slide');
 let slideIndex = 0;
@@ -56,3 +56,36 @@ window.addEventListener('load', () => {
 window.addEventListener('resize', () => {
     showSlide(slideIndex);
 });
+
+// Slider functionality for the gallery sliders
+function scrollGallerySlider(button, direction) {
+
+    const sliderWrapper = button.closest('.gallery-slider-wrapper');
+    if (!sliderWrapper) {
+        return;
+    }
+
+    const slider = sliderWrapper.querySelector('.gallery-slider');
+    if (!slider) {
+        return;
+    }
+
+    const slides = slider.querySelectorAll('.gallery-slide');
+    if (slides.length === 0) {
+        return;
+    }
+
+    const slideWidth = slides[0].offsetWidth;
+    const currentTransform = slider.style.transform ? parseInt(slider.style.transform.split('(')[1]) : 0;
+
+    let newTransform = currentTransform + direction * slideWidth;
+
+    // Zapętlanie slidera
+    if (newTransform > 0) {
+        newTransform = -(slideWidth * (slides.length - 1)); // Przejdź do ostatniego slajdu
+    } else if (newTransform < -(slideWidth * (slides.length - 1))) {
+        newTransform = 0; // Przejdź do pierwszego slajdu
+    }
+
+    slider.style.transform = `translateX(${newTransform}px)`;
+}
