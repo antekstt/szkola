@@ -58,6 +58,32 @@ section p {
     margin: 20px auto;
 }
 
+/* Przycisk w sekcji #start */
+#start a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 0px 10px;
+    background: linear-gradient(45deg, #ff6f61, #ff3b2f); /* Gradientowe tło */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Cień */
+    position: relative;
+    overflow: hidden;
+}
+
+#start a:hover {
+    background: linear-gradient(45deg, #ff3b2f, #ff6f61); /* Zmiana gradientu po najechaniu */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Większy cień po najechaniu */
+    transform: translateY(-2px); /* Lekkie unoszenie przycisku */
+}
+
+/* Efekt "falowania" po kliknięciu */
+#start a:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 
 /* Tekst i przycisk w sekcji #start */
 #start h1,
