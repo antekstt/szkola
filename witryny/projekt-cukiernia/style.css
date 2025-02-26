@@ -197,6 +197,9 @@ section p {
 .gallery-slide {
     min-width: 100%;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gallery-slide img {
@@ -240,9 +243,8 @@ section p {
     grid-template-columns: repeat(2, 1fr); /* 2 karty w rzędzie */
     gap: 20px; /* Odstęp między kartami */
     justify-content: center;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto; /* Wyśrodkuj menu i dodaj odstęp na dole */
     max-width: 800px; /* Ogranicz szerokość, aby karty nie były zbyt szerokie */
-    margin: 0 auto; /* Wyśrodkuj menu */
 }
 
 .card {
