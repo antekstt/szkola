@@ -17,8 +17,8 @@
             <li><a href="#oferta">Oferta</a></li>
             <li><a href="#onas">O nas</a></li>
             <li><a href="#galeria">Galeria</a></li>                     <!-- nawigacja -->
-            <li><a href="#miejsce">Miejsce</a></li>
-            <li><a href="#kontakt">Rezerwacja</a></li>
+            <li><a href="#miejsce">Nasza lokalizacja</a></li>
+            <li><a href="#rezerwacja">Rezerwacja</a></li>
         </ul>
     </nav> 
     
@@ -31,13 +31,12 @@
                     <div class="slide"><img src="img/cake2.jpg" alt="Ciasto 2"></div>
                     <div class="slide"><img src="img/cake3.jpg" alt="Ciasto 3"></div>
                     <div class="slide"><img src="img/cake4.png" alt="Ciasto 4"></div>
-                    <div class="slide"><img src="img/cake5.jpg" alt="Ciasto 5"></div>
                 </div>
             </div>
         </div>
         <h1>Cukiernia Słodki Raj</h1>
         <p>Najlepsze wypieki w mieście</p>
-        <a href="#kontakt"><h3>Zarezerwuj stolik już teraz!</h3></a>
+        <a href="#rezerwacja"><h3>Zarezerwuj stolik już teraz!</h3></a>
     </section>
 
 
@@ -55,22 +54,28 @@
             </button>
             <button class="card" onclick="flipCard(this)">
                 <div class="front">
-                    <img src="img/szarlotka_icon.jpg" alt="Szarlotka">
-                    Szarlotka
+                    <div>
+                        <img src="img/szarlotka-icon.jpg" alt="Szarlotka">
+                        <p>Szarlotka</p>
+                    </div>
                 </div>
                 <div class="back">Nasza tradycyjna szarlotka z cynamonem, uwielbiana przez wszystkich fanów jesieni.</div>
             </button>
             <button class="card" onclick="flipCard(this)">
                 <div class="front">
-                    <img src="img/eklerki_icon.jpg" alt="Eklerki">
-                    Eklerki
+                    <div>
+                        <img src="img/ekler_icon.jpeg" alt="Eklerki">
+                        <p>Eklerki</p>
+                    </div>
                 </div>
                 <div class="back">Pyszne klasyczne eklerki z kremem waniliowo-śmietankowym.</div>
             </button>
             <button class="card" onclick="flipCard(this)">
                 <div class="front">
-                    <img src="img/makowiec_icon.jpg" alt="Makowiec">
-                    Makowiec
+                    <div>
+                        <img src="img/makowiec_icon.jpeg" alt="Makowiec">
+                        <p>Makowiec</p>
+                    </div>
                 </div>
                 <div class="back">Naturalnie aromatyczny makowiec z lukrem.</div>
             </button>
@@ -79,13 +84,14 @@
     
         
     <section id="onas">
+        <hr style="color:black; width: 80%; margin: 0 auto;">
         <h2>O nas</h2>
         <p>Rodzinna cukiernia, która od pokoleń serwuje najlepsze wypieki.</p>  <!-- opis cukierni -->
     </section>
     
-
     <section id="galeria">
-        <h2>Galeria</h2>
+        <hr style="color:black; width: 80%; margin: 0 auto;">
+        <h1>Galeria</h1>
         <div class="gallery">
             <!-- Slider dla sernika -->
             <div class="cake-slider">
@@ -94,15 +100,15 @@
                     <button class="gallery-scroll-button left" onclick="scrollGallerySlider(this, 1)">&#10094;</button>
                     <div class="gallery-slider-container">
                         <div class="gallery-slider">
-                            <div class="gallery-slide"><img src="img/sernik.jpg" alt="Sernik1"></div>
-                            <div class="gallery-slide"><img src="img/sernik1.jpg" alt="Sernik2"></div>
-                            <div class="gallery-slide"><img src="img/sernik2.jpg" alt="Sernik3"></div>
+                            <div class="gallery-slide"><img src="img/sernik1.jpg" alt="Sernik1"></div>
+                            <div class="gallery-slide"><img src="img/sernik2.jpg" alt="Sernik2"></div>
+                            <div class="gallery-slide"><img src="img/sernik3.jpg" alt="Sernik3"></div>
                         </div>
                     </div>
                     <button class="gallery-scroll-button right" onclick="scrollGallerySlider(this, -1)">&#10095;</button>
                 </div>
             </div>
-    
+
             <!-- Slider dla szarlotki -->
             <div class="cake-slider">
                 <h3>Szarlotka</h3>
@@ -118,7 +124,7 @@
                     <button class="gallery-scroll-button right" onclick="scrollGallerySlider(this, -1)">&#10095;</button>
                 </div>
             </div>
-    
+
             <!-- Slider dla eklerków -->
             <div class="cake-slider">
                 <h3>Eklerki</h3>
@@ -134,7 +140,7 @@
                     <button class="gallery-scroll-button right" onclick="scrollGallerySlider(this, -1)">&#10095;</button>
                 </div>
             </div>
-    
+
             <!-- Slider dla makowca -->
             <div class="cake-slider">
                 <h3>Makowiec</h3>
@@ -151,17 +157,20 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section></div>
     
 
     <!-- mapa -->
     <section id="miejsce">
-        <h2>Nasza Lokalizacja</h2>
+        <hr style="color:black; width: 80%; margin: 0 auto;">
+        <h2>Gdzie nas znaleźć?</h2>
         <iframe title="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2415.9183115207024!2d15.235860811929959!3d52.733666472001715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47071f76f2c5e239%3A0x8029e9c8c90bbc3b!2zWmVzcMOzxYIgU3prw7PFgiBFbGVrdHJ5Y3pueWNo!5e0!3m2!1spl!2sus!4v1739961190585!5m2!1spl!2sus" width=70% height="450" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p>Znajdujemy się na <a class="miejsce-a" href="https://g.co/kgs/ip3k8Gk">ul. Dąbrowskiego 33 w Gorzowie Wlkp.</a></p>
     </section>
     
 
-    <section id="kontakt">
+    <section id="rezerwacja">
+        <hr style="color:black; width: 80%; margin: 0 auto;">
         <h2>Rezerwacja</h2>
         <form id="form">
             <div id="form-container">
@@ -182,6 +191,7 @@
             </div>
         </form>
     </section>
+
 
 </body>
 </html>

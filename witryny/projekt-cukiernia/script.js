@@ -41,6 +41,8 @@ function nextSlide() {
     if (slideIndex >= slides.length) {
         slideIndex = 0; // Wróć do pierwszego slajdu po ostatnim
     }
+    // Add smooth transition to the slider
+    slider.style.transition = 'transform 0.5s ease-in-out';
     showSlide(slideIndex);
 }
 
@@ -88,4 +90,5 @@ function scrollGallerySlider(button, direction) {
     }
 
     slider.style.transform = `translateX(${newTransform}px)`;
+    slider.style.transition = 'transform 0.5s ease-in-out';
 }
