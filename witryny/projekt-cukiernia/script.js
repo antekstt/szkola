@@ -1,4 +1,3 @@
-// Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -8,16 +7,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Flip card functionality
 function flipCard(card) {
     card.classList.toggle('flipped');
 }
 
-// Form submission handling
 document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
-
-    // You might want to add code here to actually send the form data to a server
 
     const formContainer = document.getElementById('form-container');
     const successMessage = document.getElementById('success-message');
@@ -41,27 +36,22 @@ function nextSlide() {
     if (slideIndex >= slides.length) {
         slideIndex = 0; // Wróć do pierwszego slajdu po ostatnim
     }
-    // Add smooth transition to the slider
     slider.style.transition = 'transform 0.5s ease-in-out';
     showSlide(slideIndex);
 }
 
-// Automatically advance to the next slide every 3 seconds
 setInterval(nextSlide, 3000);
 
-// Initial slide display
 window.addEventListener('load', () => {
     showSlide(slideIndex);
 });
 
-// Recalculate slide width on window resize
 window.addEventListener('resize', () => {
     showSlide(slideIndex);
 });
 
 // Slider functionality for the gallery sliders
 function scrollGallerySlider(button, direction) {
-
     const sliderWrapper = button.closest('.gallery-slider-wrapper');
     if (!sliderWrapper) {
         return;
@@ -82,13 +72,17 @@ function scrollGallerySlider(button, direction) {
 
     let newTransform = currentTransform + direction * slideWidth;
 
-    // Zapętlanie slidera
     if (newTransform > 0) {
-        newTransform = -(slideWidth * (slides.length - 1)); // Przejdź do ostatniego slajdu
+        newTransform = -(slideWidth * (slides.length - 1));
     } else if (newTransform < -(slideWidth * (slides.length - 1))) {
-        newTransform = 0; // Przejdź do pierwszego slajdu
+        newTransform = 0;
     }
 
     slider.style.transform = `translateX(${newTransform}px)`;
     slider.style.transition = 'transform 0.5s ease-in-out';
 }
+
+// Toggle menu visibility on smaller screens
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('nav ul').classList.toggle('show');
+});

@@ -17,6 +17,17 @@ nav {
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 nav ul {
@@ -25,6 +36,8 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 nav ul li {
@@ -43,6 +56,7 @@ nav ul li a {
 nav ul li a:hover {
     background-color: #f2d7d5;
 }
+
 
 section {
     padding: 20px;
@@ -351,6 +365,7 @@ section p {
     padding: 10px 20px;
     background-color: #ffcccb;
     border: none;
+    width: 100%;
     color: #333;
     border-radius: 5px;
     cursor: pointer;
@@ -364,6 +379,37 @@ section p {
     .card {
         width: 100%; /* Karty zajmują całą szerokość na mniejszych ekranach */
         height: auto; /* Wysokość dostosowuje się do zawartości */
-        aspect-ratio: 1 / 1; /* Zachowaj kwadratowy kształt */
+        min-height: 200px; /* Minimalna wysokość karty */
+        aspect-ratio: auto; /* Usuń zachowanie kwadratowego kształtu */
+        min-width:200px;
+    }
+    .gallery-row .gallery-item {
+        flex: 1 1 calc(100% - 20px); /* 1 zdjęcie w rzędzie z odstępem */
+        max-width: calc(100% - 20px);
+    }
+
+    .gallery-slide img {
+        width: 100%;
+        height: auto; /* Maintain aspect ratio */
+        max-height: none; /* Remove max-height restriction */
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
     }
 }
