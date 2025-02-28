@@ -83,6 +83,6 @@ function scrollGallerySlider(button, direction) {
 }
 
 // Toggle menu visibility on smaller screens
-document.querySelector('.menu-toggle').addEventListener('click', function() {
+document.querySelector('.nav-toggle').addEventListener('click', function() {
     document.querySelector('nav ul').classList.toggle('show');
 });

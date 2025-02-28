@@ -22,7 +22,7 @@ nav {
     align-items: center;
 }
 
-.menu-toggle {
+.nav-toggle {
     display: none;
     background: none;
     border: none;
@@ -176,7 +176,7 @@ section p {
 
 /* Galeria */
 .gallery {
-    display: flex;
+    display: gird;
     flex-direction: column;
     gap: 40px; /* Odstęp między sliderami */
     padding: 20px;
@@ -272,14 +272,19 @@ section p {
     right: 10px;
 }
 
-/* Menu oferty */
+/* Menu nax */
 .menu {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 karty w rzędzie */
     gap: 20px; /* Odstęp między kartami */
     justify-content: center;
-    margin: 0 auto 20px auto; /* Wyśrodkuj menu i dodaj odstęp na dole */
     max-width: 800px; /* Ogranicz szerokość, aby karty nie były zbyt szerokie */
+}
+
+.nav
+{
+    margin: 0 auto 7px auto; /* Wyśrodkuj menu i dodaj odstęp na dole */
+    justify-content: center;
 }
 
 .card {
@@ -375,6 +380,7 @@ section p {
 @media (max-width: 768px) {
     .menu {
         grid-template-columns: 1fr; /* Na mniejszych ekranach 1 karta w rzędzie */
+        display:none;
     }
     .card {
         width: 100%; /* Karty zajmują całą szerokość na mniejszych ekranach */
@@ -394,19 +400,23 @@ section p {
         max-height: none; /* Remove max-height restriction */
     }
 
-    .menu-toggle {
-        display: block;
+    .nav-toggle {
+        display: block; /* Pokazujemy przycisk na małych ekranach */
     }
 
     nav ul {
-        display: none;
+        display: none; /* Domyślnie ukryte menu */
         flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
         width: 100%;
-        text-align: center;
+        background: #ffcccb;
+        padding: 10px 0;
     }
 
     nav ul.show {
-        display: flex;
+        display: flex; /* Pokazujemy menu po kliknięciu */
     }
 
     nav ul li {
