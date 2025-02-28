@@ -8,7 +8,9 @@ public class zad3
         int wiek;
         System.out.println("Podaj swoj wiek:");
         wiek=d.nextInt();
-        if(wiek>=18) System.out.println("Jestes pelnoletni");
+        if(wiek<0) System.out.println("Nie zyjesz");
+        else if(wiek>120) System.out.println("Nie zyjesz");
+        else if(wiek>=18) System.out.println("Jestes pelnoletni");
         else System.out.println("Nie jestes pelnoletni");
     }
 }
