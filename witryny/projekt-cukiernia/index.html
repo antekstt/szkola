@@ -168,30 +168,40 @@
         <p>Znajdujemy się na <a class="miejsce-a" href="https://g.co/kgs/ip3k8Gk">ul. Dąbrowskiego 33 w Gorzowie Wlkp.</a></p>
     </section>
     
+    <hr style="color:black; width: 80%; margin: 0 auto;">
 
-    <section id="rezerwacja">
-        <hr style="color:black; width: 80%; margin: 0 auto;">
-        <h2>Rezerwacja</h2>
-        <form id="form">
-            <div id="form-container">
-                <label for="name">Imię:</label> <br>
-                <input type="text" id="name" required> <br>
-                <label for="tel">Numer telefonu:</label>  <br>                    <!-- formularz -->
-                <input type="tel" id="tel" required> <br>
-                <label for="message">Data</label> <br>
-                <input type="date" id="data" required> <br>
-                <label for="message">Godzina</label> <br>
-                <input type="time" id="time" required> <br>
-                <label for="message">Uwagi, (prosimy podać ilość osób)</label> <br>
-                <textarea id="message" required></textarea> <br>
-                <button type="submit">Wyślij</button>
+    <div class="container">
+        <section id="rezerwacja">
+            <h2>Rezerwacja</h2>
+            <form id="form">
+                <div id="form-container">
+                    <label for="name">Imię:</label> <br>
+                    <input type="text" id="name" required> <br>
+                    <label for="tel">Numer telefonu:</label>  <br>
+                    <input type="tel" id="tel" required> <br>
+                    <label for="message">Data</label> <br>
+                    <input type="date" id="data" required> <br>
+                    <label for="message">Godzina</label> <br>
+                    <input type="time" id="time" required> <br>
+                    <label for="message">Uwagi, (prosimy podać ilość osób)</label> <br>
+                    <textarea id="message" required></textarea> <br>
+                    <button type="submit">Wyślij</button>
+                </div>
+                <div id="success-message" style="display: none;">
+                    Rezerwacja została wysłana do rozpatrzenia. Skontaktujemy się z państwem w najbliższym czasie w celu potwierdzenia rezerwacji.
+                </div>
+            </form>
+        </section>
+    
+        <section id="kontakt">
+            <h2>Kontakt</h2>
+            <div class="kontakt-info">
+                <p>Telefon: <a href="tel:123-456-789">123 456 789</a></p>
+                <p>Email: <a href="mailto:kontakt@slodkiraj.pl">kontakt@slodkiraj.pl</a></p>
+                <p><a href="#miejsce">Adres</a></p>
             </div>
-            <div id="success-message" style="display: none;"> <!-- Success message div -->
-                Rezerwacja została wysłana do rozpatrzenia. Skontaktujemy się z państwem w najbliższym czasie w celu potwierdzenia rezerwacji.
-            </div>
-        </form>
-    </section>
-
+        </section>
+    </div>
 
 </body>
 </html>

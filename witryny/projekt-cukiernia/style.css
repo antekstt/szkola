@@ -346,13 +346,32 @@ section p {
     border-radius: 5px;
 }
 
+.container {
+    display: flex; /* Ustawiamy kontener jako flexbox */
+    justify-content: space-between; /* Rozmieszczamy sekcje z odstępem między nimi */
+    padding: 20px; /* Dodajemy padding dla lepszego wyglądu */
+    max-width: 1200px; /* Ograniczamy szerokość kontenera */
+    margin: 0 auto; /* Wyśrodkowanie kontenera */
+}
+
+#rezerwacja, #kontakt {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#rezerwacja {
+    flex: 1; /* Formularz zajmuje dostępną przestrzeń */
+    margin-right: 20px; /* Dodajemy odstęp między formularzem a sekcją kontaktu */
+}
+
 /* Formularz */
 #form {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 400px;
-    margin: 20px auto;
+    margin: 20px 0; /* Zmieniamy margines, aby nie był wyśrodkowany */
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -374,6 +393,26 @@ section p {
     color: #333;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.kontakt-info {
+    flex: 1; /* Sekcja kontaktu zajmuje dostępną przestrzeń */
+    max-width: 400px; /* Ograniczamy szerokość sekcji kontaktu */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Wyrównujemy tekst do lewej */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    max-height: 300px;
+    height: 300px;
+    margin: 20px 0;
+}
+
+#kontakt a{
+    color: #f1a6a0;
 }
 
 /* Responsywność */
@@ -421,5 +460,18 @@ section p {
 
     nav ul li {
         margin: 10px 0;
+    }
+
+    .container {
+        flex-direction: column; /* Sekcje jedna pod drugą */
+    }
+
+    #rezerwacja {
+        margin-right: 0; /* Usuwamy odstęp między sekcjami */
+        margin-bottom: 20px; /* Dodajemy odstęp na dole */
+    }
+
+    #kontakt {
+        max-width: 100%; /* Sekcja kontaktu zajmuje całą szerokość */
     }
 }
