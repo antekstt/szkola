@@ -30,6 +30,10 @@ nav {
     cursor: pointer;
 }
 
+section {
+    scroll-margin-top: 55px !important;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -112,6 +116,7 @@ section p {
 
 /* Sekcja #start */
 #start {
+    padding-top: 60px;
     position: relative;
     height: 80vh; /* Wysokość proporcjonalna do okna przeglądarki */
     display: flex;
@@ -371,7 +376,7 @@ section p {
     flex-direction: column;
     width: 100%;
     max-width: 400px;
-    margin: 20px 0; /* Zmieniamy margines, aby nie był wyśrodkowany */
+    margin: 20px 0;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -396,11 +401,11 @@ section p {
 }
 
 .kontakt-info {
-    flex: 1; /* Sekcja kontaktu zajmuje dostępną przestrzeń */
-    max-width: 400px; /* Ograniczamy szerokość sekcji kontaktu */
+    flex: 1;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Wyrównujemy tekst do lewej */
+    align-items: center;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -425,7 +430,7 @@ section p {
         width: 100%; /* Karty zajmują całą szerokość na mniejszych ekranach */
         height: auto; /* Wysokość dostosowuje się do zawartości */
         min-height: 200px; /* Minimalna wysokość karty */
-        aspect-ratio: auto; /* Usuń zachowanie kwadratowego kształtu */
+        aspect-ratio: auto;
         min-width:200px;
     }
     .gallery-row .gallery-item {
@@ -435,12 +440,12 @@ section p {
 
     .gallery-slide img {
         width: 100%;
-        height: auto; /* Maintain aspect ratio */
-        max-height: none; /* Remove max-height restriction */
+        height: auto; 
+        max-height: none;
     }
 
     .nav-toggle {
-        display: block; /* Pokazujemy przycisk na małych ekranach */
+        display: block; /* Pokazujemy przycisk do nawigacji na małych ekranach */
     }
 
     nav ul {
