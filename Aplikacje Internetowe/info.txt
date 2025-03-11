@@ -1,0 +1,8 @@
+http://klasy.itmargen.com/
+login: uczen_zse
+Haslo: Elektryk1.
+
+Mail: mgenge@itmargen.com
+Temat maila: Imie Nazwisko | Klasa | Miesiac | Przedmiot
+
+https://kursjs.pl/

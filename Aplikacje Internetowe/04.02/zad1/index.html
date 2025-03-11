@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+</head>
+<body>
+    <center>
+        <h3>Podaj liczby:</h3>
+        <input type="text" placeholder="a" id="a">
+        <input type="text" placeholder="b" id="b">
+        <br>
+        <h3>Wybierz działanie:</h3>
+        <button onclick="add()">+</button>
+        <button onclick="sub()">-</button>
+        <br>
+        <button onclick="mul()">*</button>
+        <button onclick="div()">/</button>
+        <h3>Wynik:</h3>
+        <input type="number" id="result" readonly>
+    </center>
+    
+    <script src="script.js">
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadania i Przydatne Funkcje JavaScript</title>
+</head>
+<body>
+
+    <h1>Przydatne metody JavaScript do rozwiązania zadań</h1>
+    <ul>
+       <li><strong>`Math.random()`</strong> - Generuje losową liczbę z przedziału od 0 do 1. Może być używana do losowania wyboru komputera w grze.</li> 
+         <li><strong>`Math.floor()`</strong> - Zaokrągla liczbę w dół do najbliższej liczby całkowitej. Przydatna do konwertowania wartości z `Math.random()` na odpowiednią liczbę całkowitą w celu wyboru opcji.</li> 
+         <li><strong>`addEventListener(event, function)`</strong> - Umożliwia nasłuchiwanie na zdarzenia (np. kliknięcia przycisków) i wykonywanie funkcji w odpowiedzi na te zdarzenia.</li> 
+         <li><strong>`querySelector(selector)`</strong> - Zwraca pierwszy element dokumentu, który pasuje do określonego selektora CSS. Może być używana do pobierania przycisków lub innych elementów HTML.</li> 
+         <li><strong>`querySelectorAll(selector)`</strong> - Zwraca wszystkie elementy dokumentu, które pasują do określonego selektora CSS. Przydatne do dodawania nasłuchiwaczy zdarzeń dla grupy elementów.</li> 
+         <li><strong>`textContent`</strong> - Umożliwia ustawianie lub zwracanie tekstu wewnątrz elementu HTML. Może być używana do aktualizacji wyników gry lub wyświetlania punktów.</li> 
+         <li><strong>`createElement(tagName)`</strong> - Tworzy nowy element HTML określonego typu (np. `div`, `button`). Może być używane do dynamicznego tworzenia nowych elementów na stronie.</li> 
+         <li><strong>`appendChild(childNode)`</strong> - Dodaje węzeł potomny do danego węzła rodzica. Może być używane do dodawania nowych elementów do kontenera.</li> 
+         <li><strong>`removeChild(childNode)`</strong> - Usuwa węzeł potomny z danego węzła rodzica. Przydatne do usuwania elementów z DOM.</li> 
+         <li><strong>`alert(message)`</strong> - Wyświetla okno alertu z określoną wiadomością. Może być używane do informowania użytkowników o błędach lub wynikach gry.</li> 
+         <li><strong>`prompt(message)`</strong> - Wyświetla okno dialogowe z opcją do wprowadzenia tekstu. Może być używane do zbierania danych od użytkownika.</li> 
+         <li><strong>`setAttribute(attribute, value)`</strong> - Ustawia wartość atrybutu określonego elementu. Może być używane do dynamicznej zmiany atrybutów elementów HTML (np. stylów).</li>
+         <li><strong>/^[^\s@]+@[^\s@]+\.[^\s@]+$/;</strong>Regex potrzebny do walidacji meila</li>
+         <li><strong>!/[A-Z]/.test(password)</strong>Regex potrzebny do walidacji hasła, sprawdza czy tekst zawiera wielką literę</li>
+    </ul>
+
+    <h1>Zadania z JavaScript</h1>
+
+    <h2>Zadanie 1: Formularz rejestracyjny z walidacją wielu pól</h2>
+    <p>Stwórz formularz rejestracyjny, który waliduje następujące pola: e-mail, hasło, potwierdzenie hasła, data urodzenia. Hasło musi mieć co najmniej 8 znaków, jedno z nich musi być wielką literą, a e-mail musi być poprawny. Hasła muszą być takie same, a użytkownik musi mieć co najmniej 18 lat, aby zarejestrować konto. Wyświetl odpowiednie komunikaty błędów, jeśli warunki nie są spełnione.</p>
+
+    <h2>Zadanie 2: Zaawansowany kalkulator z historią operacji</h2>
+    <p>Stwórz kalkulator z podstawowymi operacjami matematycznymi (dodawanie, odejmowanie, mnożenie, dzielenie) oraz potęgowaniem i pierwiastkowaniem. Kalkulator powinien także zapisywać historię wszystkich przeprowadzonych operacji i umożliwiać użytkownikowi przeglądanie tej historii w formie listy na stronie.</p>
+
+    <h2>Zadanie 3: Galeria zdjęć z funkcją pełnoekranową i przewijaniem</h2>
+    <p>Stwórz galerię zdjęć, która pozwala użytkownikowi przeglądać zdjęcia w miniaturach, a po kliknięciu w obraz, otwiera go w trybie pełnoekranowym z opcją przewijania między zdjęciami. Użyj JavaScript do przełączania zdjęć za pomocą strzałek (lewo/prawo) oraz przycisku zamykania, który wyjmuje tryb pełnoekranowy.</p>
+
+    <h2>Zadanie 4: Licznik czasu wstecznego z alertem</h2>
+    <p>Stwórz licznik czasu wstecznego, który po wprowadzeniu przez użytkownika ilości minut i sekund, będzie odliczał czas i wyświetlał wynik na stronie. Po zakończeniu odliczania, wyświetli alert z informacją o zakończeniu licznika oraz dźwięk powiadomienia (dodaj plik dźwiękowy w tle).</p>
+
+    <h2>Zadanie 5: Dynamiczne tworzenie i usuwanie elementów na stronie</h2>
+    <p>Stwórz stronę, na której użytkownik może dynamicznie dodawać nowe elementy div za pomocą formularza (podając treść, kolor tła i szerokość/ wysokość div-a). Każdy div będzie miał również przycisk "usuń", który pozwoli użytkownikowi usunąć konkretny div. Elementy powinny być tworzone i usuwane dynamicznie przy użyciu JavaScript.</p>
+
+    <h2>Zadanie 6: Gra "Kamień, Papier, Nożyce" z przeciwnikiem komputerowym</h2>
+    <p>Stwórz grę "Kamień, Papier, Nożyce", w której gracz gra przeciwko komputerowi. Komputer powinien losowo wybierać jedną z opcji (kamień, papier, nożyce) przy użyciu funkcji <code>Math.random()</code>. Wyświetl wynik gry i zaktualizuj licznik punktów dla obu stron (gracza i komputera). Gra powinna być interaktywna i działać w przeglądarce.</p>
+
+</body>
+</html>
