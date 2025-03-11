@@ -1,4 +1,3 @@
-
 const tab = []; // pusta tablica
 
 const tab2 = [1, 2, 3, 4];
@@ -34,8 +33,8 @@ const tab9 = ["Marcin", "Ania", "Agnieszka"];
 console.log(tab9.length); // 3
 console.log(tab9[tab9.length - 1]); // "Agnieszka"
 
-for (let i = 0; i < tab9.length; i++) {
-    console.log(tab9[i]);
+for (const element of tab9) {
+    console.log(element);
 }
 
 tab9.push("Piotrek");
@@ -100,7 +99,7 @@ console.log(tab13); // [4, 3, 2, 1]
 
 const word = "kajak";
 const tab14 = [...word];
-console.log(tab14.reverse().join("") === tab14.join("")); // true, czyli palindrom
+console.log(tab14.toReversed().join("") === tab14.join("")); // true, czyli palindrom
 
 const tab15 = ["Marcin", "Ania", "Agnieszka", "Monika"];
 console.log(tab15.indexOf("Agnieszka")); // 2
@@ -135,15 +134,15 @@ buttons.forEach(btn => {
 });
 
 const tab18 = ["Marcin", "Ania", "Piotrek", "Grześ"];
-tab18.sort();
+tab18.sort((a, b) => a.localeCompare(b));
 console.log(tab18); // ["Ania", "Grześ", "Marcin", "Piotrek"]
 
 const tab19 = [1, 2, 21, 2.1, 32, 3.1];
-tab19.sort();
+tab19.sort((a, b) => a - b);
 console.log(tab19); // [1, 2, 2.1, 21, 3.1, 32]
 
 const tab20 = ["Bartek", "ania", "Celina", "agnieszka"];
-tab20.sort();
+tab20.sort((a, b) => a.localeCompare(b));
 console.log(tab20); // ["Bartek", "Celina", "agnieszka", "ania"]
 
 function compare(a, b) {
@@ -159,7 +158,7 @@ function compareNr(a, b) {
 }
 
 const tab21 = [100, 320, 10, 25, 310, 1200, 400];
-const tab22 = tab21.sort(compareNr);
+const tab22 = tab21.toSorted(compareNr);
 console.log(tab22); // [10, 25, 100, 310, 320, 400, 1200]
 
 const tab23 = [
@@ -362,11 +361,10 @@ const buttonsTabB = Array.from(buttons3); // array
 
 const ob5 = { 0: "a", 1: "b", length: 2 };
 console.log(Array.from(ob5)); // ["a", "b"]
-// console.log([...ob5]); // TypeError: ob5 is not iterable
 
 {
     const tab44 = [1, 2, 3, 4];
-    const newTab = tab44.reverse(); // metoda zmienia oryginalną tablicę
+    const newTab = tab44.toReversed(); // metoda zwraca odwróconą tablicę, ale nie zmienia oryginalnej
     console.log(tab44); // [4, 3, 2, 1]
     console.log(newTab); // [4, 3, 2, 1]
 }
@@ -380,7 +378,7 @@ console.log(Array.from(ob5)); // ["a", "b"]
 
 {
     const tab46 = [10, 1.4, 22, 2];
-    const newTab = tab46.sort((a, b) => a - b);
+    const newTab = tab46.toSorted((a, b) => a - b);
     console.log(tab46); // [1.4, 2, 10, 22]
     console.log(newTab); // [1.4, 2, 10, 22]
 }
@@ -428,14 +426,19 @@ console.log(nazwaFunkcji(5)); // 25
 
 alert("Ala ma kota");
 
-Math.random();
-Math.max(1, 2, 3);
+const randomValue = Math.random();
+console.log(randomValue);
+const maxValue = Math.max(1, 2, 3);
+console.log(maxValue);
 
-"ala ma kota".toUpperCase();
-"kot i pies".substr(1);
+const upperCaseText = "ala ma kota".toUpperCase();
+console.log(upperCaseText);
+const result = "kot i pies".substring(1);
+console.log(result);
 
 [1, 2, 3].push(4);
-[1, 2, 3].join("-");
+const joinedArray = [1, 2, 3].join("-");
+console.log(joinedArray);
 
 function sum(a, b) {
     return a + b;
@@ -475,16 +478,16 @@ print("Karol"); // "Karol jest najlepszy"
 print("Paweł", "wysoki"); // "Paweł jest wysoki"
 print(undefined, "wysoki"); // "Michał jest wysoki"
 
-function sum() {
+function sumArguments() {
     console.log(arguments);
 }
 
-sum(); // Arguments []
-sum(1, 2, 3, 4); // Arguments [1, 2, 3, 4]
-sum("ala", "ma", "kota"); // Arguments ["ala", "ma", "kota"]
+sumArguments(); // Arguments []
+sumArguments(1, 2, 3, 4); // Arguments [1, 2, 3, 4]
+sumArguments("ala", "ma", "kota"); // Arguments ["ala", "ma", "kota"]
 
 function sumNumbers() {
-    const sum = [...arguments].reduce((a, b) => a + b);
+    const sum = [...arguments].reduce((a, b) => a + b, 0);
     return sum;
 }
 
@@ -492,7 +495,7 @@ console.log(sumNumbers(1, 2, 3, 4)); // 10
 
 function superSum(...params) {
     console.log(params); // [1, 2, 3, 4]
-    const sum = params.reduce((a, b) => a + b);
+    const sum = params.reduce((a, b) => a + b, 0);
     return sum;
 }
 
@@ -514,19 +517,16 @@ console.log("kot".repeat(randomBetween(1, 6)));
 
 console.log(randomBetween(1, 6) + randomBetween(1, 10));
 
-const tab53 = [];
 for (let i = 0; i < 10; i++) {
-    tab53.push(randomBetween(1, 100));
+    randomBetween(1, 100);
 }
 
 if (randomBetween(1, 10)) {
     // ...
 }
 
-function sum(a, b) {
+function add(a, b) {
     return a + b;
-    console.log(a + b); // nigdy nie zostanie wykonane
-    console.log("Test");
 }
 
 function getStatus(number) {
@@ -562,11 +562,11 @@ function returnObject() {
 
 console.log(returnObject().first); // "ala"
 
-function printText() {
+function printTextNew() {
     // ...
 }
 
-printText();
+printTextNew();
 
 const printText2 = function() {
     // ...
@@ -593,15 +593,19 @@ document.addEventListener("click", function() {
 });
 
 const myFn = function() {
+    // Function implementation here
+    console.log("Function executed");
 };
 
 [3, 1, 2].sort(function(a, b) {
+    return a - b;
 });
 
 const myFn2 = () => {
 };
 
 [3, 1, 2].sort((a, b) => {
+    return a - b;
 });
 
 const myF2 = function(a) {
@@ -626,7 +630,7 @@ const myF6 = function(a, b) {
 
 const myF7 = (a, b) => {
     const result = a * b;
-    console.log("Wynik mnożenia to", result);
+    console.log(`Multiplication result is ${result}`);
     return result;
 };
 
@@ -652,8 +656,8 @@ console.log();
 console.dir();
 console.table();
 
-const ob6 = { ... };
-const ob7 = { ... };
+const ob6 = { key: "value" };
+const ob7 = { key2: "value2" };
 debugger;
 
 const ob8 = { ...ob6, ...ob7 };
@@ -688,16 +692,16 @@ let x = "Jola";
 // console.log(a); // ReferenceError: a is not defined
 console.log(x); // "Jola"
 
-var x2 = "Jola";
+let x2 = "Jola";
 
 function fn1() {
-    var a = "Ala";
+    let a = "Ala";
     console.log(a); // "Ala"
     console.log(x2); // "Jola"
 }
 
 function fn2() {
-    var a = "Ola";
+    let a = "Ola";
     console.log(a); // "Ola"
     console.log(x2); // "Jola"
 }
@@ -705,7 +709,7 @@ function fn2() {
 // console.log(a); // ReferenceError: a is not defined
 console.log(x2); // "Jola"
 
-var x3 = 1;
+let x3 = 1;
 
 function show() {
     var x3 = 2;
@@ -878,9 +882,9 @@ fn6("ala");
 
 {
     let a = 20;
-    var b = 10;
+    var b1 = 10;
 }
-console.log(b); // 10
+console.log(b1); // 10
 
 for (let i = 0; i < 10; i++) {
     console.log(i);
@@ -984,23 +988,23 @@ function fibonacci(n) {
     }
 }
 
-console.log(fibonacci(10));
+console.log(fibonacci(10)); // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 
 function loop() {
-    for (let i=0; i<10000; i++) {
+    for (let i = 0; i < 10000; i++) {
         console.log(i);
     }
 
-    setTimeout(() => loop(), 2000); //po 2 sekundach ponownie odpalam loop
+    setTimeout(() => loop(), 2000);
 }
 
 loop();
 
-const arr = [ 1, 2, 3, [ 4, 5, 6, [7, 8], [9, 10, [11, 12] ] ] ];
+const arr = [1, 2, 3, [4, 5, 6, [7, 8], [9, 10, [11, 12]]]];
 
 function sumTab(tab) {
     let sum = 0;
-    for (let i=0; i<tab.length; i++) {
+    for (let i = 0; i < tab.length; i++) {
         if (Array.isArray(tab[i])) {
             sum += sumTab(tab[i]);
         } else {
@@ -1010,260 +1014,227 @@ function sumTab(tab) {
     return sum;
 }
 
-console.log( sumTab(arr) ); //78
+console.log(sumTab(arr)); // 78
 
-const tab = ["Marcin", "Monika", "Magda", "Piotrek", "Grześ", "Magda"];
+const tab54 = ["Marcin", "Monika", "Magda", "Piotrek", "Grześ", "Magda"];
 
-for (let i=0; i<tab.length; i++) {
-    const el = tab[i];
+for (let i = 0; i < tab54.length; i++) {
+    const el = tab54[i];
     console.log(el);
 }
 
-const tab = ["Marcin", "Monika", "Magda"];
+const tab55 = ["Marcin", "Monika", "Magda"];
 
-//pod zmienną el trafią kolejne elementy
-tab.forEach(el => {
+tab55.forEach(el => {
     console.log(el.toUpperCase());
 });
-const tab = ["Marcin", "Monika", "Magda"];
 
-//pod zmienną i będzie wstawiany indeks elementu
-tab.forEach((el, i) => {
+tab55.forEach((el, i) => {
     console.log(`Aktualny element to ${el}, a jego indeks to ${i}`);
 });
-const tab = ["Marcin", "Ania", , "Agnieszka"];
 
-//pod zmienną arr wstawiana będzie aktualna tablica po której iterujemy - może kiedyś to się przyda?
-tab.forEach((el, i, arr) => {
+const tab56 = ["Marcin", "Ania", , "Agnieszka"];
+
+tab56.forEach((el, i, arr) => {
     console.log(`Indeks elementu to ${i}, a długość tablicy to ${arr.length}`);
 });
-const tab = ["Marcin", "Monika", "Magda"];
+
+const tab57 = ["Marcin", "Monika", "Magda"];
 
 function printDetails(el, i, arr) {
     console.log(el, i, arr);
 }
 
-tab.forEach(printDetails);
+tab57.forEach(printDetails);
+
 new Array(100).forEach(() => {
-    console.log("Ala ma kota"); //wykona się 100 razy, bez wypisywania żadnego elementu, indeksu itp
+    console.log("Ala ma kota");
 });
 
-const tab = ["Marcin", "Monika", "Magda"];
+const tab58 = ["Marcin", "Monika", "Magda"];
 
-const ob = {
-    name : "Marcin"
+const ob10 = {
+    name: "Marcin"
 };
 
-tab.forEach(function() {
-    console.log(this); //window
+tab58.forEach(function() {
+    console.log(this); // window
 });
 
-tab.forEach(function() {
-    console.log(this); //ob
-}, ob);
+tab58.forEach(function() {
+    console.log(this); // ob10
+}, ob10);
 
-const tab = ["kot", "pies", "świnka", "jeż"];
+const tab59 = ["kot", "pies", "świnka", "jeż"];
 
-//sprawdzam czy chociaż jedno słowo ma minimum 3 litery
-const word3letter = tab.some(el => el.length >= 3);
+const word3letter = tab59.some(el => el.length >= 3);
+console.log(word3letter); // true
 
-console.log(word3letter); //true
-
-const tab = [
-    { name : "Piotr", age: 18 },
-    { name : "Ania", age: 15 },
-    { name : "Monika", age: 16 }
+const tab60 = [
+    { name: "Piotr", age: 18 },
+    { name: "Ania", age: 15 },
+    { name: "Monika", age: 16 }
 ];
 
-//a może chociaż jeden user jest pełnoletni?
-console.log( tab.some(el => el.age >= 18) ); //true
+console.log(tab60.some(el => el.age >= 18)); // true
 
-const tab = ["Marcin", "Monika", "Magda"];
+const tab61 = ["Marcin", "Monika", "Magda"];
 
-const tab2 = tab.map(el => el.toUpperCase());
+const tab62 = tab61.map(el => el.toUpperCase());
 
-console.log(tab); //[Marcin, Monika, Magda]
-console.log(tab2); //[MARCIN, MONIKA, MAGDA]
+console.log(tab61); // ["Marcin", "Monika", "Magda"]
+console.log(tab62); // ["MARCIN", "MONIKA", "MAGDA"]
 
-const tab = [1, 2, 3];
-const tab2 = tab.map(el => el * 2);
+const tab63 = [1, 2, 3];
+const tab64 = tab63.map(el => el * 2);
 
-console.log(tab2); //[2, 4, 6]
-const numbers = [1.2, 4.5, 9.3];
+console.log(tab64); // [2, 4, 6]
 
-const absolute = numbers.map(el => Math.ceil(el));
-console.log(absolute); //[2, 5, 10]
+const numbers2 = [1.2, 4.5, 9.3];
+
+const absolute = numbers2.map(el => Math.ceil(el));
+console.log(absolute); // [2, 5, 10]
+
 function multiple3(number) {
     return number * 3;
 }
 
-var ourTable = [1, 2, 3];
-console.log(ourTable.map(multiple3)); //[3, 6, 9]
+const ourTable2 = [1, 2, 3];
+console.log(ourTable2.map(multiple3)); // [3, 6, 9]
 
-const tab = [1, 2, 3, 4, 5, 6];
+const tab65 = [1, 2, 3, 4, 5, 6];
 
-const evenNumbers = tab.filter(el => el % 2 === 0);
+const evenNumbers = tab65.filter(el => el % 2 === 0);
+console.log(evenNumbers); // [2, 4, 6]
 
-console.log(evenNumbers); //[2, 4, 6]
-const tab = ["Marcin", "Agnieszka", "Magda", "Monika", "Piotrek"];
+const tab66 = ["Marcin", "Agnieszka", "Magda", "Monika", "Piotrek"];
 
-const woman = tab.filter(name => name.endsWith("a"));
+const woman = tab66.filter(name => name.endsWith("a"));
+console.log(woman); // ["Agnieszka", "Magda", "Monika"]
 
-console.log(woman); //["Agnieszka", "Magda", "Monika"]
-const tab = [
-    { name : "Piotr", age: 18 },
-    { name : "Ania", age: 15 },
-    { name : "Monika", age: 16 },
-    { name : "Andrzej", age: 20 },
+const tab67 = [
+    { name: "Piotr", age: 18 },
+    { name: "Ania", age: 15 },
+    { name: "Monika", age: 16 },
+    { name: "Andrzej", age: 20 },
 ];
 
-const adultUsers = tab.filter(user => user.age >= 18);
+const adultUsers = tab67.filter(user => user.age >= 18);
+console.log(adultUsers); // [{ name: "Piotr", age: 18 }, { name: "Andrzej", age: 20 }]
 
-console.log(adultUsers); //[{ name : "Piotr", age: 18 },  { name : "Andrzej", age: 20}]
+const tab68 = [1, 2, 3, 4];
 
-const tab = [1, 2, 3, 4];
+const result4 = tab68.reduce((prev, curr) => prev + curr);
+console.log(result4); // 10
 
-const result = tab.reduce((prev, curr) => prev + curr);
+const tab69 = [3, 2, 4, 2];
 
-//1 iteracja => prev = 1, curr = 2
-//2 iteracja => prev = 3, curr = 3
-//3 iteracja => prev = 6, curr = 4
-//wynik = 10
-const tab = [3, 2, 4, 2];
+const result5 = tab69.reduce((a, b) => a * b);
+console.log(result5); // 48
 
-const result = tab.reduce((a, b) => a * b);
+const tab70 = [1, 2, 3];
+const sum4 = tab70.reduce((a, b) => a + b, 0);
+console.log(sum4); // 6
 
-//1 iteracja => prev = 3,  curr = 2
-//2 iteracja => prev = 6,  curr = 4
-//3 iteracja => prev = 24, curr = 2
+const sum5 = [1, 2, 3].reduce((a, b) => a + b, "");
+console.log(sum5); // "123"
 
-//wynik = 48
-
-const tab = [3, 2, 4, 2];
-let sum = 0;
-
-for (let i=0; i<tab.length; i++) {
-    sum += tab[i];
-}
-
-//atrybut po funkcji to początkowa wartość
-const sum = [1, 2, 3].reduce((a, b) => a + b, 0);
-
-console.log(sum); //6
-const sum = [1, 2, 3].reduce((a, b) => a + b, "");
-
-console.log(sum); //"123"
 const data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 
 const flatArray = data.reduce((total, amount) => total.concat(amount), []);
+console.log(flatArray); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-console.log(flatArray); //[ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
-const data = [{age : 10}, {age : 12}, {age : 15}];
+const data2 = [{ age: 10 }, { age: 12 }, { age: 15 }];
 
-//dlaczego poniżej muszę zwracać obiekt z kluczem age?
-const age = data.reduce((a, b) => ({age : a.age + b.age}), {age : 0});
+const age = data2.reduce((a, b) => ({ age: a.age + b.age }), { age: 0 });
+console.log(age); // { age: 37 }
 
-console.log(age); //37
+const ob11 = { name: "Jan" };
+const things2 = ["ala", "bala", "cala", ob11, "data"];
 
-const ob = { name : "Jan" }
-const things = ["ala", "bala", "cala", ob, "data"];
+console.log(things2.indexOf(ob11)); // 3
+console.log(things2.includes(ob11)); // true
 
-console.log(things.indexOf(ob)); //3
-console.log(things.includes(ob)); //true
-
-const tab = [
-    { name : "Karol", age: 10, gender: "m" },
-    { name : "Beata", age: 13, gender: "w" },
-    { name : "Marcin", age: 18, gender: "m" },
-    { name : "Ania", age: 20, gender: "w" }
+const tab71 = [
+    { name: "Karol", age: 10, gender: "m" },
+    { name: "Beata", age: 13, gender: "w" },
+    { name: "Marcin", age: 18, gender: "m" },
+    { name: "Ania", age: 20, gender: "w" }
 ];
 
-const firstWoman = tab.find(el => el.gender === "w");
-console.log(firstWoman); //{ name : "Beata", age: 13, gender: "w" }
+const firstWoman = tab71.find(el => el.gender === "w");
+console.log(firstWoman); // { name: "Beata", age: 13, gender: "w" }
 
-const adult = tab.find(el => el.age >= 18);
-console.log(adult) //{ name : "Marcin", age: 18, gender: "m" }
-const tab = [12, 5, 8, 130, 44];
+const adult2 = tab71.find(el => el.age >= 18);
+console.log(adult2); // { name: "Marcin", age: 18, gender: "m" }
 
-const bigNr = tab.find(el => el >= 15);
-console.log(bigNr); //130
+const tab72 = [12, 5, 8, 130, 44];
 
+const bigNr = tab72.find(el => el >= 15);
+console.log(bigNr); // 130
 
-const tab = [
-    { name : "Karol", age: 10, gender: "m" },
-    { name : "Beata", age: 13, gender: "w" },
-    { name : "Marcin", age: 18, gender: "m" },
-    { name : "Ania", age: 20, gender: "w" }
+const tab73 = [
+    { name: "Karol", age: 10, gender: "m" },
+    { name: "Beata", age: 13, gender: "w" },
+    { name: "Marcin", age: 18, gender: "m" },
+    { name: "Ania", age: 20, gender: "w" }
 ];
 
-const lastWoman = tab.find(el => el.gender === "w");
-console.log(lastWoman); //{ name : "Ania", age: 20, gender: "w" }
+const lastWoman = tab73.find(el => el.gender === "w");
+console.log(lastWoman); // { name: "Ania", age: 20, gender: "w" }
 
-const tab = [
-    { name : "Karol", age: 10, gender: "m" },
-    { name : "Beata", age: 13, gender: "w" },
-    { name : "Marcin", age: 18, gender: "m" },
-    { name : "Ania", age: 20,gender: "w" }
+const tab74 = [
+    { name: "Karol", age: 10, gender: "m" },
+    { name: "Beata", age: 13, gender: "w" },
+    { name: "Marcin", age: 18, gender: "m" },
+    { name: "Ania", age: 20, gender: "w" }
 ];
 
-const index = tab.findIndex(el => el.gender === "m")
+const index3 = tab74.findIndex(el => el.gender === "m");
+console.log("index pasującego elementu:", index3);
+console.log("Pasujący element:", tab74[index3]);
 
-console.log("index pasującego elementu:", index);
-console.log("Pasujący element:", tab[index]);
-const tab = [
-    { name : "Monika", gender: "w" },
-    { name : "Agata", gender: "w" },
-    { name : "Marcin", gender: "m" },
-    { name : "Patrycja", gender: "w" }
-]
+const tab75 = [
+    { name: "Monika", gender: "w" },
+    { name: "Agata", gender: "w" },
+    { name: "Marcin", gender: "m" },
+    { name: "Patrycja", gender: "w" }
+];
 
-const index = tab.findIndex(el => el.gender === "m");
-tab.splice(index, 1); //usuwam wyszukany element
-console.log(tab); //[{Monika...}, {Agata...}, {Patrycja...}]
+const index4 = tab75.findIndex(el => el.gender === "m");
+tab75.splice(index4, 1);
+console.log(tab75); // [{ name: "Monika", gender: "w" }, { name: "Agata", gender: "w" }, { name: "Patrycja", gender: "w" }]
 
-const text = "Ala ma kota";
+const text3 = "Ala ma kota";
 
-text.toUpperCase().substr(0, 3).length //kolejne funkcje odpalamy po kropce
+text3.toUpperCase().substr(0, 3).length;
 
-//czasami trzymanie wszystkiego w jednej linii nie jest dobrym rozwiązaniem
-text
+text3
     .toUpperCase()
     .substr(0, 3)
-    .length
+    .length;
 
-    const tab = ["Marcin", "Monika", "Magda"];
+const tab76 = ["Marcin", "Monika", "Magda"];
 
-const newTab = tab
-    .map(el => el.toLowerCase()) //zwracam nową tablicę...
-    .filter(el => el.endsWith("a")) //...więc mogę ją odfiltrować
-    .map(el => el + "!") //...filter zwróciło tablicę więc mogę użyć map
-    .forEach(el => console.log(el)) //...map zwróciło tablicę więc forEach pasuje
+const newTab53 = tab76
+    .map(el => el.toLowerCase())
+    .filter(el => el.endsWith("a"))
+    .map(el => el + "!")
+    .forEach(el => console.log(el));
 
-console.log(newTab)
+console.log(newTab53);
 
-const tab = ["Marcin", "Monika", "Magda"];
+const tab77 = ["Marcin", "Monika", "Magda"];
 
-const lower = function(el) {
-    return el.toLowerCase();
-}
+const lower = el => el.toLowerCase();
+const checkLastLetterA = el => el.endsWith("a");
+const addExclamationMark = el => el + "!";
+const showElement = el => console.log(el);
 
-const checkLastLetterA = function(el) {
-    return el.endsWith("a");
-}
-
-const addExclamationMark = function(el) {
-    return el + "!"
-}
-
-const showElement = function(el) {
-    console.log(el);
-}
-
-const newTab = tab
+const newTab54 = tab77
     .map(lower)
     .filter(checkLastLetterA)
     .map(addExclamationMark)
     .forEach(showElement);
 
-console.log(newTab)
-
+console.log(newTab54);
