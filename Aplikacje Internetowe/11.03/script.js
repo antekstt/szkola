@@ -731,7 +731,7 @@ console.log(x4); // 1
 const a3 = 10;
 const b3 = 20;
 
-function myF2(a, b) {
+function myF2_new(a, b) {
     console.log(a, b); // "Ala", "Ola"
 }
 
