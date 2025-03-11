@@ -774,3 +774,45 @@ const getObj = name => ({ team : name, score : 0 }) //ok
 
 
 
+//wypisanie tekstu
+const text = "Moja mała świnka";
+console.log(text);
+
+//wypisywanie całego obiektu
+console.log(window);
+
+//wypisanie wielu rzeczy po przecinku
+const a = 10;
+const b = 20;
+console.log("a: ", a, "b: ", b);
+
+const obj = { name: "test" }
+
+//zamiast
+console.log("Wynik: " + obj); //"Wynik: [object Object]"
+
+//użyj
+console.log("Wynik:", obj); //"Wynik:", {name: "test"}
+
+console.log() //klasyk
+console.dir() //do bardziej szczegółowego wypisywania obiektów. Szczególnie przydatna przy wypisywaniu elementów DOM
+console.table() //wypisuje ładnie sformatowany stan tabeli w danym momencie
+
+const ob1 = { ... }
+const ob2 = { ... }
+debugger; //zatrzymujemy wykonywanie kodu
+
+const ob3 = {...ob1, ...ob2};
+debugger; //znowu zatrzymujemy - a co!
+const users = [
+    { name : "Marcin", points : 51 },
+    { name : "Weronika", points : 87 },
+    { name : "Piotr", points : 65 },
+    { name : "Monika", points : 46 },
+    { name : "Anna", points : 98 },
+]
+
+users.forEach(function(user) {
+    console.log(user.name, user.points);
+})
+
