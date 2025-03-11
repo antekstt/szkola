@@ -816,3 +816,608 @@ users.forEach(function(user) {
     console.log(user.name, user.points);
 })
 
+let x = "Jola";
+
+{
+    let a = "Ala";
+    console.log(a); //Ala
+    console.log(x); //Jola
+}
+
+{
+    let a = "Ola"; //zmienna lokalna w tym bloku
+    console.log(a); //Ola
+    console.log(x); //Jola
+}
+
+console.log(a); //error - nie ma takiej zmiennej
+console.log(x); //Jola
+
+var x = "Jola";
+
+function fn1() {
+    var a = "Ala";
+    console.log(a); //Ala
+    console.log(x); //Jola
+}
+
+function fn2() {
+    var a = "Ola";
+    console.log(a); //Ola
+    console.log(x); //Jola
+}
+
+console.log(a); //błąd bo zmienna a jest dostępna tylko w funkcji
+console.log(x); //Jola
+
+var x = 1;
+
+function show() {
+    //deklarujemy zmienną x dostępną tylko w tej funkcji
+    //zbieżność nazw z zewnętrzną zmienną x nie przeszkadza, bo to nie są te same zmienne
+    var x = 2;
+    console.log(x); //2
+}
+
+show();
+console.log(x); //1 - jesteśmy poza funkcją
+
+let x = 1;
+
+{
+    let x = 2;
+    console.log(x); //2
+}
+
+console.log(x); //1
+
+const a = 10;
+const b = 20;
+
+function myF(a, b) {
+    console.log(a, b); //"Ala", "Ola"
+}
+
+myF("Ala", "Ola");
+console.log(a, b); //10, 20
+
+var sum = 1;
+
+function show(a, b) {
+    //funkcja show zaczyna definiować swoje zmienne.
+    //musi zadeklarować zmienne parametrów a i b
+    //czy poniżej musi zdefiniować nową zmienną sum?
+    //Nie, ponieważ poniżej nie ma deklaracji nowej zmiennej
+    //(brakuje słowa var, let lub const)
+    //funkcja więc odwołuje się tutaj do zmiennej z zewnątrz
+
+    sum = a + b;
+    console.log(sum); //wypisze 5
+}
+
+show(2, 3); //5
+console.log(sum); //5 a powinno być 1
+let sum = 1;
+{
+    sum = 2 + 3;
+    console.log(sum); //5
+}
+console.log(sum); //5
+
+var lv0 = 0;
+
+function fn1() {
+    var lv1 = 1;
+    console.log(lv0); //0
+    console.log(lv2); //błąd - nie ma dostępu do zmiennych w wewnętrznej funkcji
+
+    function fn2() {
+        var lv2 = 2;
+        console.log(lv0, lv1, lv2); //0, 1, 2
+    }
+}
+
+console.log(lv1, lv2); //błąd - zewnętrzne środowisko nie ma dostępu
+let lv0 = 0;
+
+{
+    let lv1 = 1;
+    console.log(lv0); //0
+    console.log(lv2); //błąd - nie ma dostępu do zmiennych w wewnętrznym bloku
+
+    {
+        let lv2 = 2;
+        var lv2B = 2;
+        console.log(lv0, lv1, lv2); //0, 1, 2
+    }
+}
+
+console.log(lv1, lv2); //błąd - zewnętrzne środowisko nie ma dostępu
+console.log(lv2B); //uwaga - lv2B to var. Mamy tutaj dostęp, bo zmienna ta nie jest wewnatrz funkcji
+
+let a = 0;
+
+function myF() {
+    a++; //zmienna globalna
+    console.log(`a: ${a}`);
+}
+
+myF(); //a: 1
+myF(); //a: 2
+myF(); //a: 3
+myF(); //a: 4
+
+let a = 0;
+
+function myF() {
+    let b = 0;
+    a++;
+    b++;
+    console.log(`a: ${a}, b: ${b}`);
+}
+
+myF(); //a: 1, b: 1
+myF(); //a: 2, b: 1
+myF(); //a: 3, b: 1
+myF(); //a: 4, b: 1
+
+function firstFn() {
+    let a = 0;
+
+    function myF() {
+        let b = 0;
+        a++;
+        b++;
+        console.log(`a: ${a}, b: ${b}`);
+    }
+
+    myF(); //a: 1, b: 1
+    myF(); //a: 2, b: 1
+    myF(); //a: 3, b: 1
+    myF(); //a: 4, b: 1
+}
+
+firstFn();
+
+function firstFn() {
+    let a = 0;
+
+    return function() {
+        a++;
+        console.log(a);
+    }
+}
+
+const c = firstFn(); //podstawiam wynik funkcji firstFn czyli funkcję z linii 4
+c(); //1
+c(); //2
+c(); //3
+c(); //4
+
+function mySafeArea() {
+    let x = 100;
+
+    const show = () => {
+        console.log(`x: ${x}`);
+    }
+
+    const setX = (nr) => {
+        x = nr
+    }
+
+    //poniżej zwracany obiekt, który ma dostęp do powyższych zmiennych i metod
+    //dzięki którym może te zmienne modyfikować
+    return {
+        setX,
+        show
+    }
+}
+
+const ob = mySafeArea();
+ob.x = 150; //nie mogę tak ustawić zmiennej bo nie mam do niej dostępu z zewnątrz
+ob.show(); //x: 100
+ob.setX(150);
+ob.show(); //x: 150
+
+const fn1 = function() {...}
+
+const fn2 = function(a) {
+    console.log(a);
+}
+
+fn1();
+
+fn2("ala");
+
+{
+    let a = 20;
+    var b = 10;
+}
+console.log(b); //10
+
+for (i=0; i<10; i++) {
+    console.log(i);
+}
+
+for (i=0; i<10; i++) {
+    console.log(i);
+}
+
+console.log(i); //10
+console.log(window.i); //10
+
+function show(a) {
+    console.log(a)
+ }
+ 
+ show(1); //przekazaliśmy numer
+ show("Ala"); //przekazaliśmy tekst
+ show({a : 2}); //przekazaliśmy obiekt
+ show([1,2,3]); //przekazaliśmy tablicę
+ [1,2,1,4].sort((a, b) => {
+    return a - b
+})
+
+[1,2,3,4].forEach(el => {
+    console.log(el);
+});
+
+element.addEventListener("click", () => {
+    alert("klik");
+});
+function sortFn(a, b) {
+    return a - b;
+}
+
+function printText(el) {
+    console.log(el);
+}
+
+function klik() {
+    alert("klik");
+}
+
+[1,2,1,4].sort(sortFn);
+
+[1,2,3,4].forEach(printText);
+
+element.addEventListener("click", klik);
+
+function myF(fn) {
+    //pod fn trafia poniższa anonimowa funkcja
+    //no to ją wywołajmy...
+    fn();
+}
+
+myF(() => {
+    console.log("...");
+});
+function randomBetween(min, max, fn) {
+    const nr = Math.floor(Math.random()*(max-min+1)+min);
+    fn(nr);
+}
+
+randomBetween(10, 20, res => {
+    console.log("Losowa liczba to: " + res);
+});
+function sumTable(tab, fn) {
+    let sum = 0;
+    for (let i=0; i<tab.length; i++) {
+        sum += tab[i];
+    }
+    fn(sum);
+}
+
+sumTable([1,2,3,4], res => {
+    console.log("Suma liczb w tablicy to: " + res);
+});
+
+function myF(fn) {
+    const text = "Ala"
+    fn(text); //pod poniższe "a" trafi tekst "Ala"
+}
+
+myF((a) => {
+    console.log(a + " ma kota") //Ala ma kota
+})
+
+function myFn() {
+    console.log("test");
+    myFn();
+}
+
+myFn();
+
+function fibonacci(n) {
+    if (n===1) {
+        return [0, 1];
+    } else {
+        const arr = fibonacci(n - 1);
+        arr.push(arr[arr.length - 1] + arr[arr.length - 2]);
+        return arr;
+    }
+}
+
+console.log(fibonacci(10)); //[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
+function loop() {
+    for (let i=0; i<10000; i++) {
+        console.log(i);
+    }
+
+    setTimeout(() => loop(), 2000); //po 2 sekundach ponownie odpalam loop
+}
+
+loop();
+
+const arr = [ 1, 2, 3, [ 4, 5, 6, [7, 8], [9, 10, [11, 12] ] ] ];
+
+function sumTab(tab) {
+    let sum = 0;
+    for (let i=0; i<tab.length; i++) {
+        if (Array.isArray(tab[i])) {
+            sum += sumTab(tab[i]);
+        } else {
+            sum += tab[i];
+        }
+    }
+    return sum;
+}
+
+console.log( sumTab(arr) ); //78
+
+const tab = ["Marcin", "Monika", "Magda", "Piotrek", "Grześ", "Magda"];
+
+for (let i=0; i<tab.length; i++) {
+    const el = tab[i];
+    console.log(el);
+}
+
+const tab = ["Marcin", "Monika", "Magda"];
+
+//pod zmienną el trafią kolejne elementy
+tab.forEach(el => {
+    console.log(el.toUpperCase());
+});
+const tab = ["Marcin", "Monika", "Magda"];
+
+//pod zmienną i będzie wstawiany indeks elementu
+tab.forEach((el, i) => {
+    console.log(`Aktualny element to ${el}, a jego indeks to ${i}`);
+});
+const tab = ["Marcin", "Ania", , "Agnieszka"];
+
+//pod zmienną arr wstawiana będzie aktualna tablica po której iterujemy - może kiedyś to się przyda?
+tab.forEach((el, i, arr) => {
+    console.log(`Indeks elementu to ${i}, a długość tablicy to ${arr.length}`);
+});
+const tab = ["Marcin", "Monika", "Magda"];
+
+function printDetails(el, i, arr) {
+    console.log(el, i, arr);
+}
+
+tab.forEach(printDetails);
+new Array(100).forEach(() => {
+    console.log("Ala ma kota"); //wykona się 100 razy, bez wypisywania żadnego elementu, indeksu itp
+});
+
+const tab = ["Marcin", "Monika", "Magda"];
+
+const ob = {
+    name : "Marcin"
+};
+
+tab.forEach(function() {
+    console.log(this); //window
+});
+
+tab.forEach(function() {
+    console.log(this); //ob
+}, ob);
+
+const tab = ["kot", "pies", "świnka", "jeż"];
+
+//sprawdzam czy chociaż jedno słowo ma minimum 3 litery
+const word3letter = tab.some(el => el.length >= 3);
+
+console.log(word3letter); //true
+
+const tab = [
+    { name : "Piotr", age: 18 },
+    { name : "Ania", age: 15 },
+    { name : "Monika", age: 16 }
+];
+
+//a może chociaż jeden user jest pełnoletni?
+console.log( tab.some(el => el.age >= 18) ); //true
+
+const tab = ["Marcin", "Monika", "Magda"];
+
+const tab2 = tab.map(el => el.toUpperCase());
+
+console.log(tab); //[Marcin, Monika, Magda]
+console.log(tab2); //[MARCIN, MONIKA, MAGDA]
+
+const tab = [1, 2, 3];
+const tab2 = tab.map(el => el * 2);
+
+console.log(tab2); //[2, 4, 6]
+const numbers = [1.2, 4.5, 9.3];
+
+const absolute = numbers.map(el => Math.ceil(el));
+console.log(absolute); //[2, 5, 10]
+function multiple3(number) {
+    return number * 3;
+}
+
+var ourTable = [1, 2, 3];
+console.log(ourTable.map(multiple3)); //[3, 6, 9]
+
+const tab = [1, 2, 3, 4, 5, 6];
+
+const evenNumbers = tab.filter(el => el % 2 === 0);
+
+console.log(evenNumbers); //[2, 4, 6]
+const tab = ["Marcin", "Agnieszka", "Magda", "Monika", "Piotrek"];
+
+const woman = tab.filter(name => name.endsWith("a"));
+
+console.log(woman); //["Agnieszka", "Magda", "Monika"]
+const tab = [
+    { name : "Piotr", age: 18 },
+    { name : "Ania", age: 15 },
+    { name : "Monika", age: 16 },
+    { name : "Andrzej", age: 20 },
+];
+
+const adultUsers = tab.filter(user => user.age >= 18);
+
+console.log(adultUsers); //[{ name : "Piotr", age: 18 },  { name : "Andrzej", age: 20}]
+
+const tab = [1, 2, 3, 4];
+
+const result = tab.reduce((prev, curr) => prev + curr);
+
+//1 iteracja => prev = 1, curr = 2
+//2 iteracja => prev = 3, curr = 3
+//3 iteracja => prev = 6, curr = 4
+//wynik = 10
+const tab = [3, 2, 4, 2];
+
+const result = tab.reduce((a, b) => a * b);
+
+//1 iteracja => prev = 3,  curr = 2
+//2 iteracja => prev = 6,  curr = 4
+//3 iteracja => prev = 24, curr = 2
+
+//wynik = 48
+
+const tab = [3, 2, 4, 2];
+let sum = 0;
+
+for (let i=0; i<tab.length; i++) {
+    sum += tab[i];
+}
+
+//atrybut po funkcji to początkowa wartość
+const sum = [1, 2, 3].reduce((a, b) => a + b, 0);
+
+console.log(sum); //6
+const sum = [1, 2, 3].reduce((a, b) => a + b, "");
+
+console.log(sum); //"123"
+const data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+const flatArray = data.reduce((total, amount) => total.concat(amount), []);
+
+console.log(flatArray); //[ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+const data = [{age : 10}, {age : 12}, {age : 15}];
+
+//dlaczego poniżej muszę zwracać obiekt z kluczem age?
+const age = data.reduce((a, b) => ({age : a.age + b.age}), {age : 0});
+
+console.log(age); //37
+
+const ob = { name : "Jan" }
+const things = ["ala", "bala", "cala", ob, "data"];
+
+console.log(things.indexOf(ob)); //3
+console.log(things.includes(ob)); //true
+
+const tab = [
+    { name : "Karol", age: 10, gender: "m" },
+    { name : "Beata", age: 13, gender: "w" },
+    { name : "Marcin", age: 18, gender: "m" },
+    { name : "Ania", age: 20, gender: "w" }
+];
+
+const firstWoman = tab.find(el => el.gender === "w");
+console.log(firstWoman); //{ name : "Beata", age: 13, gender: "w" }
+
+const adult = tab.find(el => el.age >= 18);
+console.log(adult) //{ name : "Marcin", age: 18, gender: "m" }
+const tab = [12, 5, 8, 130, 44];
+
+const bigNr = tab.find(el => el >= 15);
+console.log(bigNr); //130
+
+
+const tab = [
+    { name : "Karol", age: 10, gender: "m" },
+    { name : "Beata", age: 13, gender: "w" },
+    { name : "Marcin", age: 18, gender: "m" },
+    { name : "Ania", age: 20, gender: "w" }
+];
+
+const lastWoman = tab.find(el => el.gender === "w");
+console.log(lastWoman); //{ name : "Ania", age: 20, gender: "w" }
+
+const tab = [
+    { name : "Karol", age: 10, gender: "m" },
+    { name : "Beata", age: 13, gender: "w" },
+    { name : "Marcin", age: 18, gender: "m" },
+    { name : "Ania", age: 20,gender: "w" }
+];
+
+const index = tab.findIndex(el => el.gender === "m")
+
+console.log("index pasującego elementu:", index);
+console.log("Pasujący element:", tab[index]);
+const tab = [
+    { name : "Monika", gender: "w" },
+    { name : "Agata", gender: "w" },
+    { name : "Marcin", gender: "m" },
+    { name : "Patrycja", gender: "w" }
+]
+
+const index = tab.findIndex(el => el.gender === "m");
+tab.splice(index, 1); //usuwam wyszukany element
+console.log(tab); //[{Monika...}, {Agata...}, {Patrycja...}]
+
+const text = "Ala ma kota";
+
+text.toUpperCase().substr(0, 3).length //kolejne funkcje odpalamy po kropce
+
+//czasami trzymanie wszystkiego w jednej linii nie jest dobrym rozwiązaniem
+text
+    .toUpperCase()
+    .substr(0, 3)
+    .length
+
+    const tab = ["Marcin", "Monika", "Magda"];
+
+const newTab = tab
+    .map(el => el.toLowerCase()) //zwracam nową tablicę...
+    .filter(el => el.endsWith("a")) //...więc mogę ją odfiltrować
+    .map(el => el + "!") //...filter zwróciło tablicę więc mogę użyć map
+    .forEach(el => console.log(el)) //...map zwróciło tablicę więc forEach pasuje
+
+console.log(newTab)
+
+const tab = ["Marcin", "Monika", "Magda"];
+
+const lower = function(el) {
+    return el.toLowerCase();
+}
+
+const checkLastLetterA = function(el) {
+    return el.endsWith("a");
+}
+
+const addExclamationMark = function(el) {
+    return el + "!"
+}
+
+const showElement = function(el) {
+    console.log(el);
+}
+
+const newTab = tab
+    .map(lower)
+    .filter(checkLastLetterA)
+    .map(addExclamationMark)
+    .forEach(showElement);
+
+console.log(newTab)
+
