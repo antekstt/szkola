@@ -1,4 +1,4 @@
-public class Tablice {
+public class Zadanie {
     public static void main(String[] args) {
         int[] tablica = new int[10];
 
