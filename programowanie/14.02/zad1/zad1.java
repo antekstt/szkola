@@ -1,7 +1,5 @@
-package zad1;
 import java.util.Scanner;
-
-public class Zad1 {
+public class zad1 {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
         Scanner wzrost = new Scanner(System.in);
@@ -15,4 +13,6 @@ public class Zad1 {
         else if(wzrost1 >=180 & wzrost1 < 190) System.out.println("Wysoki");
         else if(wzrost1 >=190 & wzrost1 < 220) System.out.println("Bardzo wysoki");
     }
+
+    
 }
