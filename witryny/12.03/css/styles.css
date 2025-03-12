@@ -384,6 +384,7 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
+  appearance: button;
 }
 button:not(:disabled),
 [type=button]:not(:disabled),
@@ -442,16 +443,9 @@ legend + * {
 [type=search] {
   outline-offset: -2px;
   -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
-/* rtl:raw:
-[type="tel"],
-[type="url"],
-[type="email"],
-[type="number"] {
-  direction: ltr;
-}
-*/
 ::-webkit-search-decoration {
   -webkit-appearance: none;
 }
@@ -463,6 +457,7 @@ legend + * {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
+  appearance: button;
 }
 
 output {
@@ -3385,16 +3380,6 @@ textarea.form-control-lg {
   margin-top: 0;
   margin-left: var(--bs-dropdown-spacer);
 }
-.dropend .dropdown-toggle::after {
-  display: inline-block;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
-  content: "";
-  border-top: 0.3em solid transparent;
-  border-right: 0;
-  border-bottom: 0.3em solid transparent;
-  border-left: 0.3em solid;
-}
 .dropend .dropdown-toggle:empty::after {
   margin-left: 0;
 }
@@ -3409,23 +3394,9 @@ textarea.form-control-lg {
   margin-top: 0;
   margin-right: var(--bs-dropdown-spacer);
 }
-.dropstart .dropdown-toggle::after {
-  display: inline-block;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
-  content: "";
-}
+/* Removed duplicate selector */
 .dropstart .dropdown-toggle::after {
   display: none;
-}
-.dropstart .dropdown-toggle::before {
-  display: inline-block;
-  margin-right: 0.255em;
-  vertical-align: 0.255em;
-  content: "";
-  border-top: 0.3em solid transparent;
-  border-right: 0.3em solid;
-  border-bottom: 0.3em solid transparent;
 }
 .dropstart .dropdown-toggle:empty::after {
   margin-left: 0;
@@ -10827,4 +10798,42 @@ textarea.form-control-lg {
 body {
   background: url("https://dummyimage.com/1920x1080/dee2e6/6c757d.jpg") no-repeat center center fixed;
   background-size: cover;
+  /* Add any other styles from the duplicate selector here */
+}
+
+/* Efekt typewriter */
+.typewriter {
+  overflow: hidden; /* Ukryj tekst, który jeszcze się nie pojawił */
+  border-right: 0.15em solid orange; /* Kursor migający */
+  white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+  margin: 0 auto; /* Wyśrodkowanie tekstu */
+  letter-spacing: 0.15em; /* Odstęp między literami */
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite, hide-cursor 0.1s 3.5s forwards;
+}
+
+/* Animacja pisania */
+@keyframes typing {
+  from {
+      width: 0; /* Zacznij od zerowej szerokości */
+  }
+  to {
+      width: 100%; /* Zakończ na pełnej szerokości */
+  }
+}
+
+/* Animacja migającego kursora */
+@keyframes blink-caret {
+  from, to {
+      border-color: transparent; /* Kursor znika */
+  }
+  50% {
+      border-color: orange; /* Kursor pojawia się */
+  }
+}
+
+/* Animacja ukrywania kursora po zakończeniu pisania */
+@keyframes hide-cursor {
+  to {
+      border-right-color: transparent; /* Ukryj kursor */
+  }
 }
