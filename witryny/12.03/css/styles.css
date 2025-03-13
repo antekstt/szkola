@@ -10804,10 +10804,10 @@ textarea.form-control-lg {
 .typewriter {
   overflow: hidden; /* Ukryj tekst, który jeszcze się nie pojawił */
   border-right: 0.15em solid orange; /* Kursor migający */
-  white-space: wrap; /* Zapobiega zawijaniu tekstu */
+  white-space: nowrap; /* Zapobiega zawijaniu tekstu */
   margin: 0 auto; /* Wyśrodkowanie tekstu */
   letter-spacing: 0.15em; /* Odstęp między literami */
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite, hide-cursor 0.1s 3.5s forwards;
+  animation: typing 3.5s steps(200, end), blink-caret 0.75s step-end infinite, hide-cursor 0.1s 3s forwards;
 }
 
 /* Animacja pisania */
