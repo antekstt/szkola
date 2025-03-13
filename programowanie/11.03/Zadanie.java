@@ -28,5 +28,38 @@ public class Zadanie {
         }
         System.out.println("\nNajmniejsza wartość: " + min);
         System.out.println("Największa wartość: " + max);
+
+        // c) Liczenie elementów kończących się cyfrą 3 lub 5
+        int konczy3lub5 = 0;
+        for (int i = 0; i < n; i++) {
+            int lastDigit = Math.abs(tab[i] % 10);
+            if (lastDigit == 3 || lastDigit == 5) {
+                konczy3lub5++;
+            }
+        }
+        System.out.println("Liczba elementów kończących się cyfrą 3 lub 5: " + konczy3lub5);
+
+        int suma=0;
+        double sr=0;
+        for(int i = 0; i < n; i++)
+        {
+            if(tab[i] > 0)
+            {
+                suma=suma+tab[i];
+                sr++;
+            }
+        }
+        sr=suma/sr;
+        System.out.println("Średnia arytmetyczna liczb dodatnich: " + sr);
+
+        int dod=0;
+        for(int i = 0; i < n; i++)
+        {
+            if(tab[i] > 0)
+            {
+                dod++;
+            }
+        }
+        System.out.println("Ilość liczb dodatnich: " + dod);
     }
 }
