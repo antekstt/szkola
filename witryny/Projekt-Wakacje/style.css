@@ -1,32 +1,132 @@
-body {
-    background-color: #f3f3f3;
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-.artykul {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+@media (min-width: 800px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Nagłówek na górze */
+    header {
+        text-align: center;
+        background-color: #444;
+        color: white;
+        padding: 20px;
+        font-size: 24px;
+    }
 
-nav {
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+    /* Pasek nawigacyjny */
+    nav {
+        width: 100%;
+        background-color: #333;
+        padding: 10px 0;
+        transition: all 0.3s ease; /* Płynne przejście */
+    }
+
+    /* Pozycja sticky dla nawigacji */
+    nav.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Kontener menu */
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    /* Linki w menu */
+    nav ul li {
+        display: inline;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px 15px;
+        transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+        background-color: #555;
+        border-radius: 5px;
+    }
+
+    /* Dodatkowy padding na górze, żeby uniknąć skoku strony */
+    body {
+        text-align: center;
+        justify-content: center;
+        scroll-behavior: smooth;
+        font-family: Lexend;
+    }
+    /* Kontener obrazka */
+    picture {
+        display: block;
+        width: 100%; /* Pełna szerokość kontenera */
+        max-width: 100%; /* Nie wychodzi poza ekran */
+        overflow: hidden; /* Ukrywa nadmiar */
+    }
+
+    /* Styl dla obrazków wewnątrz <picture> */
+    picture img {
+        width: 100%; /* Dostosowanie do szerokości */
+        height: auto; /* Zachowanie proporcji */
+        object-fit: cover; /* Zapobiega deformacji */
+    }
+            /* Kontener dla każdego artykułu (obrazek + tekst) */
+    .artykul article {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Obrazek - pełna szerokość i wysokość */
+    .artykul article img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: brightness(50%); /* Przyciemnienie obrazka */
+        transition: filter 0.3s ease;
+    }
+
+    /* Nakładka tekstowa na obrazek */
+    .artykul article h2,
+    .artykul article p {
+        position: absolute;
+        color: white;
+        text-align: center;
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        transition: 0.3s;
+    }
+
+    /* Pozycja tytułu (h2) */
+    .artykul article h2 {
+        top: 20%;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* Pozycja opisu (p) */
+    .artykul article p {
+        top: 50%;
+        font-size: 16px;
+        opacity: 0.8; /* Trochę przezroczysty */
+    }
+
+
+    .artykul article:hover h2,
+    .artykul article:hover p {
+        opacity: 1;
+    }
+
 }
