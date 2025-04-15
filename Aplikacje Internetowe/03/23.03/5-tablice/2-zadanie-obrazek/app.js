@@ -7,11 +7,19 @@ const tab = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,3,3,3,3,3,0,0,0,0,0],[0,0,0,
 //START
 //-----------------------------------------
 let text = '';
-//tutaj zrób zadanie za pomocą pętli
 
-
-
-
+// Pętla po wierszach tablicy 2D
+for (const row of tab) {
+    // Pętla po kolumnach w każdym wierszu
+    for (const colorIndex of row) {
+        // Pobierz odpowiedni kolor z tablicy colors
+        const pobranyKolor = colors[colorIndex];
+        // Dodaj div z odpowiednim kolorem tła
+        text += '<div style="background:' + pobranyKolor + '"></div>';
+    }
+    // Po zakończeniu wiersza dodaj znacznik nowej linii
+    text += '<br>';
+}
 
 //tutaj wstawiamy do div wygenerowany html - nie ruszaj poniższej linijki
 document.querySelector('.canvas').innerHTML = text;
