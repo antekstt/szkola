@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Interakcje z myszą i klawiaturą</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #keyInfo, #welcomeMsg {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Część 1: Interakcje z myszą</h2>
+  <button id="colorButton">Kliknij mnie!</button>
+
+  <h2>Część 2: Interakcje z klawiaturą</h2>
+  <p>Naciśnij klawisz na klawiaturze...</p>
+  <div id="keyInfo"></div>
+  <div id="welcomeMsg"></div>
+
+  <script>
+    const button = document.getElementById("colorButton");
+    const keyInfo = document.getElementById("keyInfo");
+    const welcomeMsg = document.getElementById("welcomeMsg");
+
+    function getRandomColor() {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    button.addEventListener("click", () => {
+      button.style.backgroundColor = getRandomColor();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      keyInfo.textContent = `Naciśnięto klawisz: ${e.key}`;
+      if (e.key === "Enter") {
+        welcomeMsg.textContent = "Witaj! Dobrze, że jesteś :)";
+      } else {
+        welcomeMsg.textContent = "";
+      }
+    });
+  </script>
+</body>
+</html>

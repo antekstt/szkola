@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Interaktywny Kwadrat</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+    #square {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      transition: background-color 0.3s, width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <div id="square"></div>
+
+  <script>
+    const square = document.getElementById('square');
+    const moveStep = 40;
+
+    function getRandomColor() {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    square.addEventListener('click', (e) => {
+      if (e.shiftKey) {
+        square.style.width = `${square.offsetWidth + 20}px`;
+        square.style.height = `${square.offsetHeight + 20}px`;
+      } else {
+        square.style.backgroundColor = getRandomColor();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      let top = parseInt(square.style.top) || 100;
+      let left = parseInt(square.style.left) || 100;
+      const winW = window.innerWidth;
+      const winH = window.innerHeight;
+      const squareWidth = square.offsetWidth;
+      const squareHeight = square.offsetHeight;
+
+      if (e.key === 'ArrowUp') {
+        top = Math.max(0, top - moveStep);
+      } else if (e.key === 'ArrowDown') {
+        top = Math.min(winH - squareHeight, top + moveStep);
+      } else if (e.key === 'ArrowLeft') {
+        left = Math.max(0, left - moveStep);
+      } else if (e.key === 'ArrowRight') {
+        left = Math.min(winW - squareWidth, left + moveStep);
+      }
+
+      square.style.top = `${top}px`;
+      square.style.left = `${left}px`;
+    });
+  </script>
+</body>
+</html>
