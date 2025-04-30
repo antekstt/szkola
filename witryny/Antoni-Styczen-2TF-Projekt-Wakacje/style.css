@@ -1,0 +1,457 @@
+/* === PODSTAWOWE STYLE I RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Płynne przewijanie po kliknięciu linku # */
+}
+
+body {
+    font-family: 'Lexend', sans-serif;
+    /* Responsywny rozmiar czcionki: min 16px, rośnie z szerokością (4vw), max 20px */
+    font-size: clamp(16px, 4vw, 20px);
+    line-height: 1.6;
+    color: #333; /* Kolor tekstu */
+    background-color: #f4f4f4; /* Jasne tło strony */
+}
+
+/* Dodatkowy padding dla body, gdy nav jest sticky (ustawiany przez JS) */
+body.nav-is-sticky {
+    padding-top: var(--nav-height, 60px); /* Używa zmiennej JS lub wartości domyślnej */
+}
+
+
+img {
+    max-width: 100%; /* Obrazki nie będą szersze niż ich kontener */
+    height: auto;   /* Zachowaj proporcje obrazka */
+    display: block; /* Unikaj dodatkowych odstępów pod obrazkami */
+}
+
+a {
+    color: #0077cc; /* Kolor linków */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+section, article {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff; /* Białe tło dla sekcji */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+/* Usuń margines z ostatniego elementu w main i layout-container */
+main > *:last-child,
+.layout-container > *:last-child {
+     margin-bottom: 0;
+}
+
+
+h1, h2, h3 {
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+h1 { font-size: clamp(2rem, 6vw, 3rem); color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+h2 { font-size: clamp(1.5rem, 5vw, 2.2rem); color: #333; }
+h3 { font-size: clamp(1.2rem, 4vw, 1.8rem); color: #555; }
+
+/* === NAGŁÓWEK (HEADER) === */
+header {
+    position: relative; /* Potrzebne do pozycjonowania tekstu */
+    height: 60vh; /* Przykładowa wysokość, dostosuj */
+    overflow: hidden; /* Ukryj części obrazka wychodzące poza kontener */
+    display: flex; /* Ułatwia centrowanie tekstu */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Tło pod tekstem */
+}
+
+.header-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Skaluj obrazek, aby pokrył cały kontener */
+    object-position: center; /* Wycentruj obrazek */
+}
+
+.header-text-container {
+    z-index: 1; /* Tekst nad obrazkiem */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Lekkie przyciemnienie tła dla czytelności tekstu */
+    border-radius: 8px;
+}
+
+.header-subtitle {
+    color: #eee;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* === NAWIGACJA (NAV) === */
+nav {
+    width: 100%;
+    background-color: #333; /* Ciemne tło nawigacji */
+    padding: 10px 0;
+    transition: box-shadow 0.3s ease;
+    z-index: 1000; /* Na wierzchu */
+    border-radius: 8px; /* Zaokrąglenie dodane przez Ciebie */
+}
+
+nav.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Można usunąć border-radius dla przyklejonej nawigacji, jeśli chcesz */
+    /* border-radius: 0; */
+}
+
+/* --- ZMIANY TUTAJ: Ustawienie domyślnego układu poziomego --- */
+nav ul {
+    list-style: none;
+    padding: 0 10px;       /* Padding po bokach listy */
+    display: flex;         /* Układ poziomy (Flexbox) */
+    flex-wrap: wrap;       /* Pozwól elementom zawijać się do nowej linii */
+    justify-content: center; /* Wycentruj elementy w poziomie */
+    gap: 10px 15px;      /* Odstępy między elementami (góra/dół | lewo/prawo) */
+}
+
+nav li {
+    /* margin-bottom: 10px; */ /* Usunięte - 'gap' zajmuje się odstępami */
+    /* text-align: center; */  /* Usunięte - 'justify-content' centruje całą grupę */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    display: inline-block; /* Zmienione z 'block' - lepiej dla flex */
+    padding: 8px 15px;     /* Zmniejszony padding pionowy */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-align: center;      /* Pozostawione dla wyśrodkowania tekstu w linku */
+}
+/* --- KONIEC ZMIAN w nawigacji podstawowej --- */
+
+nav a:hover, nav a:focus {
+    background-color: #555;
+    text-decoration: none;
+}
+
+/* === GŁÓWNY KONTENER UKŁADU === */
+.layout-container {
+    max-width: 1400px; /* Opcjonalnie: Maksymalna szerokość całego układu */
+    margin: 20px auto; /* Centrowanie kontenera i odstęp góra/dół */
+    padding: 0 15px; /* Wewnętrzny odstęp po bokach */
+}
+
+/* === SEKCJE I ARTYKUŁY === */
+main section:first-child, main article:first-child {
+    margin-top: 0; /* Usuń margines górny z pierwszej sekcji/artykułu w main */
+}
+
+figure {
+    margin: 15px 0;
+}
+
+figcaption {
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* === GALERIE === */
+.gallery-container {
+    margin-top: 20px;
+}
+
+/* Galeria Lightbox */
+.lightbox-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Odstęp między miniaturkami */
+    justify-content: center;
+}
+
+.lightbox-gallery .thumbnail img {
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    max-width: 150px; /* Rozmiar miniaturek */
+    border-radius: 4px;
+}
+
+.lightbox-gallery .thumbnail:hover img {
+    border-color: #0077cc;
+    transform: scale(1.05);
+}
+
+/* Okno Lightboxa */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Półprzezroczyste tło */
+    z-index: 2000; /* Nad wszystkim innym */
+    display: flex; /* Użyj flex do centrowania zawartości */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    /* Domyślnie ukryty przez atrybut [hidden] w HTML */
+}
+
+#lightbox[hidden] {
+    display: none; /* Reguła dla atrybutu hidden */
+}
+
+.lightbox-content {
+    position: relative;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 90vw; /* Maksymalna szerokość kontenera */
+    max-height: 90vh; /* Maksymalna wysokość kontenera */
+    overflow: auto; /* Dodaj scroll, jeśli treść się nie mieści */
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 70vh; /* Ogranicz wysokość obrazka */
+    margin-bottom: 15px;
+}
+
+.lightbox-title {
+    color: #333;
+}
+
+.lightbox-text {
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Galeria Flexbox */
+.flex-gallery {
+    display: flex;
+    flex-wrap: wrap; /* Pozwól zawijać, jeśli potrzeba */
+    gap: 15px; /* Odstęp między obrazkami */
+    justify-content: center; /* Wycentruj, jeśli jest mniej niż 3 */
+}
+
+.flex-gallery figure {
+    flex: 1 1 30%; /* Elastyczność: rośnij, kurcz się, bazowy rozmiar ~30% */
+    min-width: 200px; /* Minimalna szerokość, aby nie były za małe */
+    margin: 0; /* Usuń domyślny margines figury */
+    background-color: #eee; /* Lekkie tło dla figury */
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.flex-gallery img {
+    border-radius: 4px;
+}
+
+/* === FORMULARZ === */
+#formularz {
+    margin-top: 20px; /* Odstęp od góry */
+}
+#formularz h2 {
+    text-align: center;
+}
+#formularz p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block; /* Etykieta nad polem */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit; /* Dziedzicz czcionkę */
+    font-size: 1rem;
+}
+
+form textarea {
+    resize: vertical; /* Pozwól tylko na zmianę wysokości */
+}
+
+form button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #005fa3;
+}
+
+
+/* === STOPKA (FOOTER) === */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #333;
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+
+/* === UKŁAD RESPONSYWNY (MEDIA QUERIES) === */
+
+/* --- Tablet (min-width: 1024px) --- */
+@media (min-width: 1024px) {
+    /* Układ nawigacji jest teraz dziedziczony z bazy (poziomy), nie trzeba tu nic zmieniać */
+
+    .layout-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Odstęp między kolumnami */
+    }
+    .layout-container > nav {
+        flex-basis: 100%; /* Nawigacja zajmuje całą szerokość */
+        order: 1;
+    }
+    .layout-container > main {
+        flex-basis: calc(65% - 10px); /* Główna treść ~65% */
+        order: 2;
+        margin-bottom: 0;
+    }
+    .layout-container > #formularz {
+        flex-basis: calc(35% - 10px); /* Formularz ~35% */
+        order: 3;
+        align-self: flex-start; /* Zapobiega rozciągnięciu formularza na całą wysokość main */
+        margin-bottom: 0;
+    }
+
+    main section, main article {
+         margin-bottom: 20px; /* Przywróć marginesy wewnątrz main */
+    }
+     main > *:last-child { margin-bottom: 0; }
+
+    #formularz {
+        margin-top: 0; /* Resetuj margines górny formularza */
+    }
+
+} /* Koniec @media Tablet */
+
+
+/* --- Desktop (min-width: 1140px) --- */
+@media (min-width: 1140px) {
+    /* Ustawienie ogólnego kontenera na układ jednoliniowy */
+    .layout-container {
+        flex-wrap: nowrap; /* Elementy (nav, main, form) w jednym rzędzie */
+         /* gap: 20px; jest dziedziczony z tabletu, jeśli potrzebny */
+    }
+
+    /* Stylizacja kolumny nawigacji */
+    .layout-container > nav {
+        flex-basis: 20%; /* Szerokość kolumny nav */
+        order: 1;        /* Kolejność jako pierwsza kolumna */
+        align-self: flex-start; /* Wyrównaj do góry (nie rozciągaj na całą wysokość) */
+    }
+
+    /* Stylizacja kolumny głównej treści */
+    .layout-container > main {
+        flex-basis: calc(55% - 13.4px); /* Szerokość kolumny main (uwzględnia 2x gap ok. 20px) */
+                                         /* Można uprościć do np. 55% jeśli gap nie jest krytyczny */
+        order: 2;        /* Kolejność jako druga kolumna */
+    }
+
+    /* Stylizacja kolumny formularza */
+    .layout-container > #formularz {
+        flex-basis: calc(25% - 13.4px); /* Szerokość kolumny form (uwzględnia 2x gap ok. 20px) */
+                                         /* Można uprościć do np. 25% */
+        order: 3;        /* Kolejność jako trzecia kolumna */
+        align-self: flex-start; /* Wyrównaj do góry (odziedziczone z tabletu) */
+        margin-top: 0; /* Reset marginesu górnego (odziedziczone z tabletu) */
+    }
+
+    /* --- Przywracanie pionowego układu W ŚRODKU kolumny nawigacji --- */
+    .layout-container > nav ul {
+        display: block;         /* Zmień z 'flex' na 'block', aby li układały się pionowo */
+        padding: 0;             /* Usuń padding boczny listy */
+    }
+
+    .layout-container > nav li {
+        margin-bottom: 10px;     /* Odstęp pionowy między elementami listy */
+        /* text-align nie jest tu potrzebny, jeśli ustawiamy go na 'a' */
+    }
+     .layout-container > nav li:last-child {
+          margin-bottom: 0; /* Usuń margines z ostatniego elementu */
+     }
+
+
+    .layout-container > nav a {
+        display: block;         /* Link jako blok, aby wypełnił li */
+        padding: 10px 15px;     /* Wypełnienie linku */
+        text-align: center;     /* <<<=== Wyśrodkowanie tekstu w linku ===>>> */
+        /* Zachowaj inne style linku (kolor, border-radius, transition) z bazy */
+    }
+    /* --- Koniec reguł dla pionowego menu na desktopie --- */
+
+
+    /* Reguły dla JS zmieniającego układ na pełną szerokość (jeśli używasz) */
+    .layout-container.main-full-width > nav {
+         display: none;
+         /* lub visibility: hidden; jeśli chcesz zachować pustą przestrzeń */
+    }
+    .layout-container.main-full-width > #formularz {
+         display: none;
+          /* lub visibility: hidden; */
+    }
+    .layout-container.main-full-width > main {
+        flex-basis: 100%; /* Główna treść zajmuje całą szerokość */
+        transition: flex-basis 0.4s ease-in-out; /* Płynne przejście */
+    }
+
+} /* Koniec @media Desktop */
