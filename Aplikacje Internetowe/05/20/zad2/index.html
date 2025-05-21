@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ćwiczenie 2 - Template Strings</title>
+    <style>
+        .alert {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .alert h3 {
+            margin-top: 0;
+            color: #337ab7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wynik Ćwiczenia 2</h1>
+    <div id="output"></div>
+
+    <script>
+        const tytul = "Nowość!";
+        const tresc = "Zapisz się na newsletter.";
+
+        const html = `
+          <div class="alert">
+            <h3>${tytul}</h3>
+            <p>${tresc}</p>
+          </div>
+        `;
+
+        // Wstawienie wygenerowanego HTML na stronę
+        document.getElementById("output").innerHTML = html;
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Strings - Ćwiczenie 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        strong {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ćwiczenie 1 – Template Strings (JavaScript)</h1>
+    <p>
+        Zadanie: Stwórz template string, który złączy dane użytkownika: imię, nazwisko i wiek.
+        Wynik zapisz do zmiennej <code>opis</code> i wyświetl go w konsoli.
+    </p>
+    <p>
+        Otwórz konsolę deweloperską (zazwyczaj klawisz F12), aby zobaczyć wynik z <code>console.log()</code>.
+        Poniżej wynik zostanie również wyświetlony na stronie.
+    </p>
+
+    <div id="wynikNaStronie" class="output">
+        Trwa ładowanie skryptu...
+    </div>
+
+    <script>
+        // przykładowe dane
+        const imie = "Kasia";
+        const nazwisko = "Nowak";
+        const wiek = 30;
+
+        // twoje rozwiązanie:
+        // Używamy odwrotnych apostrofów (`) do stworzenia template stringu.
+        // Zmienne wstawiamy używając składni ${nazwaZmiennej}.
+        const opis = `${imie} ${nazwisko} ma ${wiek} lat.`;
+
+        // Wyświetlenie wyniku w konsoli przeglądarki
+        console.log("Wynik z console.log():");
+        console.log(opis);
+
+        // Wyświetlenie wyniku na stronie HTML
+        // Znajdujemy element div o id="wynikNaStronie"
+        const wynikDiv = document.getElementById("wynikNaStronie");
+        // Ustawiamy jego zawartość tekstową
+        if (wynikDiv) {
+            wynikDiv.innerHTML = `Wynik wyświetlony na stronie: <br><strong>${opis}</strong>`;
+        } else {
+            console.error("Nie znaleziono elementu o ID 'wynikNaStronie'");
+        }
+    </script>
+
+</body>
+</html>

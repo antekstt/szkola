@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szablony HTML - Ćwiczenia 1, 2, 3</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        hr {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🧩 Szablony HTML – &lt;template&gt; i &lt;slot&gt;</h1>
+
+    <h2>Ćwiczenie 1: Prosty komponent &lt;info-box-v1&gt;</h2>
+    <info-box-v1>
+        <span slot="tytul-slot">Ważna Informacja (v1)</span>
+        <p slot="tresc-slot">To jest treść przekazana do komponentu &lt;info-box-v1&gt;.</p>
+    </info-box-v1>
+    <info-box-v1>
+        <span slot="tytul-slot">Inny Tytuł (v1)</span>
+        </info-box-v1>
+
+    <template id="info-box-v1-template">
+        <div>
+            <h2><slot name="tytul-slot">Domyślny Tytuł (v1)</slot></h2>
+            <p><slot name="tresc-slot">Domyślna treść (v1)...</slot></p>
+        </div>
+    </template>
+
+    <hr>
+
+    <h2>Ćwiczenie 2: Komponent &lt;info-box-v2&gt; ze stylami</h2>
+    <info-box-v2>
+        <span slot="tytul-slot">Stylowa Informacja (v2)</span>
+        <p slot="tresc-slot">Ta treść jest w ostylowanym komponencie &lt;info-box-v2&gt;.</p>
+    </info-box-v2>
+    <info-box-v2>
+        <span slot="tytul-slot">Kolejny Stylowy Box (v2)</span>
+        <p slot="tresc-slot">Różne treści, ten sam świetny styl!</p>
+    </info-box-v2>
+
+    <template id="info-box-v2-template">
+        <style>
+            /* Style są zamknięte w Shadow DOM komponentu */
+            .styled-box {
+                border: 2px solid dodgerblue;
+                background-color: lightblue;
+                padding: 15px;
+                margin-bottom: 10px;
+                border-radius: 8px;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            }
+            .styled-box h2 { /* Używamy selektora klasy dla h2 */
+                color: navy;
+                margin-top: 0;
+            }
+            .styled-box p { /* Używamy selektora klasy dla p */
+                color: #333;
+            }
+        </style>
+        <div class="styled-box">
+            <h2><slot name="tytul-slot">Domyślny Tytuł (v2)</slot></h2>
+            <p><slot name="tresc-slot">Domyślna treść (v2)...</slot></p>
+        </div>
+    </template>
+
+    <hr>
+
+    <h2>Ćwiczenie 3: Komponent &lt;info-box-v3&gt; ze slotem na stopkę</h2>
+    <info-box-v3>
+        <span slot="tytul-slot">Informacja z Przyciskiem (v3)</span>
+        <p slot="tresc-slot">Ta treść jest w komponencie &lt;info-box-v3&gt;, który ma teraz stopkę.</p>
+        <button slot="footer" onclick="alert('Kliknięto OK w v3!')">OK</button>
+    </info-box-v3>
+
+    <info-box-v3>
+        <span slot="tytul-slot">Inny Box (v3) z Linkiem w Stopce</span>
+        <p slot="tresc-slot">Tutaj mamy inną treść.</p>
+        <a href="#" slot="footer" style="padding: 5px 10px; background-color: green; color: white; text-decoration: none; border-radius: 3px;">Dowiedz się więcej</a>
+    </info-box-v3>
+
+    <info-box-v3>
+        <span slot="tytul-slot">Box (v3) bez jawnej stopki</span>
+        <p slot="tresc-slot">Ten komponent nie ma jawnie zdefiniowanej stopki, więc slot na stopkę wyświetli domyślną zawartość.</p>
+        </info-box-v3>
+
+
+    <template id="info-box-v3-template">
+        <style>
+            .final-box {
+                border: 2px solid #4CAF50;
+                background-color: #e8f5e9;
+                padding: 15px;
+                margin-bottom: 15px;
+                border-radius: 8px;
+            }
+            .final-box h2 { /* Używamy selektora klasy */
+                color: #2e7d32;
+                margin-top: 0;
+            }
+            .final-box p { /* Używamy selektora klasy */
+                color: #333;
+            }
+            .footer-content {
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px dashed #4CAF50;
+                font-size: 0.9em;
+            }
+        </style>
+        <div class="final-box">
+            <h2><slot name="tytul-slot">Domyślny Tytuł (v3)</slot></h2>
+            <p><slot name="tresc-slot">Domyślna treść (v3)...</slot></p>
+            <div class="footer-content">
+                <slot name="footer">
+                    <small><i>Domyślna stopka komponentu v3</i></small>
+                </slot>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        // Definicja dla Ćwiczenia 1
+        class InfoBoxV1 extends HTMLElement {
+            constructor() {
+                super();
+                const template = document.getElementById('info-box-v1-template');
+                const templateContent = template.content;
+                const shadowRoot = this.attachShadow({ mode: 'open' });
+                shadowRoot.appendChild(templateContent.cloneNode(true));
+            }
+        }
+        customElements.define('info-box-v1', InfoBoxV1);
+
+        // Definicja dla Ćwiczenia 2
+        class InfoBoxV2 extends HTMLElement {
+            constructor() {
+                super();
+                const template = document.getElementById('info-box-v2-template');
+                const templateContent = template.content;
+                const shadowRoot = this.attachShadow({ mode: 'open' });
+                shadowRoot.appendChild(templateContent.cloneNode(true));
+            }
+        }
+        customElements.define('info-box-v2', InfoBoxV2);
+
+        // Definicja dla Ćwiczenia 3
+        class InfoBoxV3 extends HTMLElement {
+            constructor() {
+                super();
+                const template = document.getElementById('info-box-v3-template');
+                const templateContent = template.content;
+                const shadowRoot = this.attachShadow({ mode: 'open' });
+                shadowRoot.appendChild(templateContent.cloneNode(true));
+            }
+        }
+        customElements.define('info-box-v3', InfoBoxV3);
+    </script>
+
+</body>
+</html>
